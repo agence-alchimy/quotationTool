@@ -1,0 +1,48 @@
+# from https://github.com/docker/awesome-compose/blob/master/official-documentation-samples/wordpress/README.md
+services:
+  db:
+    # We use a mariadb image which supports both amd64 & arm64 architecture
+    image: mariadb:10.6.4-focal
+    # If you really want to use MySQL, uncomment the following line
+    #image: mysql:8.0.27
+    command: "--default-authentication-plugin=mysql_native_password"
+    volumes:
+      - ./db_data:/var/lib/mysql
+    restart: always
+    env_file:
+      - .env
+    healthcheck:
+      test: '/usr/bin/mysql --user=foo --password=foo --execute "SHOW DATABASES;"'
+      # test: "/usr/local/mysql/bin/mysql --user=foo --password=foo --execute \"SHOW DATABASES;\""
+      interval: 10s
+      timeout: 1s
+      retries: 5
+    environment:
+      - MYSQL_ROOT_PASSWORD=${DB_ROOT_PASSWORD}
+      - MYSQL_DATABASE=${DB_NAME}
+      - MYSQL_USER=${DB_USER}
+      - MYSQL_PASSWORD=${DB_PASSWORD}
+    expose:
+      - 3306
+      - 33060
+
+  wordpress:
+    build: ./
+    volumes:
+      - ./wp_data:/var/www/html
+      - ./plugins:/var/www/html/wp-content/plugins:delegated
+      - ./themes:/var/www/html/wp-content/themes:delegated
+    ports:
+      - 80:80
+    restart: always
+    depends_on:
+      - db
+    environment:
+      - WORDPRESS_DB_HOST=db
+      - WORDPRESS_DB_USER=${DB_USER}
+      - WORDPRESS_DB_PASSWORD=${DB_PASSWORD}
+      - WORDPRESS_DB_NAME=${DB_NAME}
+
+volumes:
+  db_data:
+  wp_data:

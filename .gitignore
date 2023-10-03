@@ -1,0 +1,97 @@
+# User-specific files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# User-specific files (MonoDevelop/Xamarin Studio)
+*.userprefs
+
+# Mono auto generated files
+mono_crash.*
+
+# VS Code files for those working on multiple tools
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+
+# Local History for Visual Studio Code
+.history/
+
+# MacOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+#LOCAL CONFIGS
+/conf 
+/logs
+
+# User-specific files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# User-specific files (MonoDevelop/Xamarin Studio)
+*.userprefs
+
+# Mono auto generated files
+mono_crash.*
+
+# VS Code files for those working on multiple tools
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+
+# Local History for Visual Studio Code
+.history/
+
+# MacOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# NPM
+node_modules/*
+
+# COMPOSER
+composer.lock-
+
+# ENV
+.env
+
+# GIT
+!.gitkeep
+
+# COMPOSER
+composer.lock
+
+###################
+
+# DATABASE
+db_data/*
+
+# WORDPRESS
+wp_data/*
+
+# EXPORT
+wp_export/*
+
+###################  here are some example of how you should add your plugins / themes to respository
+
+# PLUGINS
+plugins/*
+#!themes/pluginToAddToRepository
+
+# THEMES
+themes/*
+#!themes/themeToAddToRepository 
