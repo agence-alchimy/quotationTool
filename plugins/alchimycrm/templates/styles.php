@@ -63,7 +63,7 @@ div.title .prestation {
 }
 #preamb {
     /* margin-left: 80px; */
-    width: 70%;
+    width: 80%;
     font-family: aktivgrotesk-light;
 }
 #preamb h2 {

@@ -54,15 +54,22 @@ $content .= get_pdf_template('entete', array(
     'prescripteur'=>$postInfos->acfs['prescripteur']
 
 ));
-if(!empty(get_field('introduction', $postInfos->ID))){
-    $content .= get_pdf_template('preambule', array('intro'=>addSpanToList(get_field('introduction', $postInfos->ID))));
+
+$introduction_field = get_field('introduction', $postInfos->ID);
+if(!empty($introduction_field) && strlen(trim($introduction_field)) > 0){
+
+    $content .= get_pdf_template('preambule', array(
+        'intro'=>addSpanToList(get_field('introduction', $postInfos->ID)),
+        'date'=>$postInfos->acfs['Date'],
+        'reference'=>$postInfos->acfs['reference'],
+    ));
 }
+
 if(!empty(get_field('entree', $postInfos->ID))){
     $content .= get_pdf_template('entrees', array(
         'reference'=>$postInfos->acfs['reference'],
         'date'=>$postInfos->acfs['Date'],
         'entrees'=>get_field('entree', $postInfos->ID)
-
     ));
 }
 if(!empty($postInfos->acfs['total_ht'])){
