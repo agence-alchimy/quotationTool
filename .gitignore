@@ -90,7 +90,7 @@ wp_export/*
 
 # PLUGINS
 plugins/*
-#!themes/pluginToAddToRepository
+!plugins/alchimycrm
 
 # THEMES
 themes/*
