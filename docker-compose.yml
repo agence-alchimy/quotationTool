@@ -1,3 +1,4 @@
+version: "3.7"
 # from https://github.com/docker/awesome-compose/blob/master/official-documentation-samples/wordpress/README.md
 services:
   db:
@@ -8,7 +9,7 @@ services:
     command: "--default-authentication-plugin=mysql_native_password"
     volumes:
       - ./db_data:/var/lib/mysql
-    restart: always
+    restart: unless-stopped
     env_file:
       - .env
     healthcheck:
@@ -18,10 +19,10 @@ services:
       timeout: 1s
       retries: 5
     environment:
-      - MYSQL_ROOT_PASSWORD=${DB_ROOT_PASSWORD}
-      - MYSQL_DATABASE=${DB_NAME}
-      - MYSQL_USER=${DB_USER}
-      - MYSQL_PASSWORD=${DB_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${DB_NAME}
+      MYSQL_USER: ${DB_USER}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
     expose:
       - 3306
       - 33060
@@ -34,14 +35,16 @@ services:
       - ./themes:/var/www/html/wp-content/themes:delegated
     ports:
       - 80:80
-    restart: always
+    restart: unless-stopped
     depends_on:
       - db
     environment:
-      - WORDPRESS_DB_HOST=db
-      - WORDPRESS_DB_USER=${DB_USER}
-      - WORDPRESS_DB_PASSWORD=${DB_PASSWORD}
-      - WORDPRESS_DB_NAME=${DB_NAME}
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_USER: ${DB_USER}
+      WORDPRESS_DB_PASSWORD: ${DB_PASSWORD}
+      WORDPRESS_DB_NAME: ${DB_NAME}
+      WORDPRESS_CONFIG_EXTRA: |
+        define( 'DB_CHARSET', 'utf8mb4' );
 
 volumes:
   db_data:
