@@ -90,6 +90,9 @@ ul li span {
     font-size: 6pt;
     font-weight: bold;
 }
+.contenu{
+    height: 100%;
+}
 .contenu h2 {
     font-size: 24pt;
 }
@@ -123,6 +126,7 @@ h4 {
 }
 .desc {
     width: 70%;
+
 }
 #cgv h2 {
     font-size: 12pt;

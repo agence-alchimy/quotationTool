@@ -24,6 +24,7 @@ function addSpanToList($val){
     // $val = preg_replace($patterns, array('<li><span>', '</span></li>'), $val);
     return $val;
 }
+
 $html2pdf = new Html2Pdf();
 $html2pdf->addFont('aktivgrotesk-bold', '',  'aktivgrotesk-bold.php');
 $html2pdf->addFont('aktivgrotesk-regular', '',  'aktivgrotesk-regular.php');

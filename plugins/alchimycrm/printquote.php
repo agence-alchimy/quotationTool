@@ -72,6 +72,14 @@ if(!empty(get_field('entree', $postInfos->ID))){
         'entrees'=>get_field('entree', $postInfos->ID)
     ));
 }
+
+if(!empty($postInfos->acfs['prestations'])){
+    $content .= get_pdf_template('options', array(
+        'reference'=>$postInfos->acfs['reference'],
+        'date'=>$postInfos->acfs['Date'],
+        'entrees'=> $postInfos->acfs['prestations']
+    ));
+}
 if(!empty($postInfos->acfs['total_ht'])){
     $content .= get_pdf_template('total', array(
         'reference'=>$postInfos->acfs['reference'],
@@ -79,13 +87,6 @@ if(!empty($postInfos->acfs['total_ht'])){
         'total_remise'=>$postInfos->acfs['total_remise'],
         'total_ht'=>$postInfos->acfs['total_ht'],
         'total_ttc'=>$postInfos->acfs['total_ttc']
-    ));
-}
-if(!empty($postInfos->acfs['prestations'])){
-    $content .= get_pdf_template('options', array(
-        'reference'=>$postInfos->acfs['reference'],
-        'date'=>$postInfos->acfs['Date'],
-        'entrees'=> $postInfos->acfs['prestations']
     ));
 }
 $content .= get_pdf_template('cgv');
