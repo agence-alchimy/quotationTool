@@ -24,8 +24,17 @@
     <table style="width:100%; font-size: 9pt;">
         <?php $num = count($services); foreach($services as $k=>$service): ?>
         <tr style="">
-            <td style="width:80%; text-transform: uppercase;padding: 10pt 0; "><?php echo $service['titre']; ?></td>
-            <td style="width:20%; text-align: right; padding: 10pt 0 "><?php echo (!empty($service['tarif'])) ?  number_format($service['tarif'], 2, ',', '.').' &euro; HT' : 'OFFERT'; ?></td>
+            <td style="width:85%; text-transform: uppercase;padding: 10pt 0; ">
+            <?php 
+            echo $service['titre']; 
+            ?>
+            <em style="text-transform: lowercase; white-space: nowrap;"><?php 
+            $nombre_string = $service['nombre']  > 1 ? " ( x".$service['nombre']." )" : '';
+            echo $nombre_string;
+            ?>
+            </em>
+            </td>
+            <td style="width:15%; text-align: right; padding: 10pt 0 "><?php echo (!empty($service['tarif'])) ?  number_format($service['tarif'], 2, ',', '.').' &euro; HT' : 'OFFERT'; ?></td>
         </tr>
         <?php if($k<$num-1): ?>
         <tr>

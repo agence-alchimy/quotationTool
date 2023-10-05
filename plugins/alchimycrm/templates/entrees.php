@@ -19,6 +19,7 @@
 <div class="contenu">
     <?php 
     foreach($entrees as $entry):
+
     ?>
     <div class="entry" style="margin-top: 50px; margin-bottom: 50px; ">
         <table style="width: 100%; border: 0;">
@@ -36,7 +37,9 @@
         $j = 0;
         
         foreach($prestations as $prestation): $j++;
+       
         ?>
+        
         <nobreak>
         <table style="width: 100%; border: 0; ">
             <tr>
@@ -79,6 +82,7 @@
     </div>
     <?php
     endforeach;
+    
     ?>
 </div>
 </page>
