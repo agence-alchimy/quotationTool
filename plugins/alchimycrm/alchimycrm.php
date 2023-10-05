@@ -124,7 +124,11 @@ function acrm_custom_box_devis_html( $post ) {
         </div>
         <div>            
             <p>Devis accepté ?</p>
-            <input type="checkbox" name="quoteaccepted" id="" <?php echo (get_post_meta( $post->ID, 'quoteaccepted', true ) == '1') ? 'checked' : ''; ?>>
+            <input type="checkbox" name="quoteaccepted" id="" <?php echo (get_post_meta( $post->ID, 'quoteaccepted', true ) == '1') && get_post_meta( $post->ID, 'quoterefused', true ) == 0 ? 'checked' : ''; ?>>
+        </div>
+        <div class="quoterefused">            
+            <p>Devis refusé</p>
+            <input type="checkbox" name="quoterefused" id="" <?php echo (get_post_meta( $post->ID, 'quoterefused', true ) == '1') ? 'checked' : ''; ?>>
         </div>
     </div>
 	<?php
@@ -351,6 +355,7 @@ function add_acf_devis_columns ( $columns ) {
       'total_ht'    => __('Total HT'),
       'quotesent'   => __('Devis envoyé'),
       'quoteaccepted'   => __('Devis accepté'),
+      'quoterefused'   => __('Devis refusé'),
     ) );
   }
 add_filter ( 'manage_devis_posts_columns', 'add_acf_devis_columns' );
@@ -406,6 +411,10 @@ function devis_custom_column ( $column, $post_id ) {
             if($quoteaccepted == '1') echo '<svg style="width:24px;height:24px" viewBox="0 0 24 24">
             <path fill="currentColor" d="M9,20.42L2.79,14.21L5.62,11.38L9,14.77L18.88,4.88L21.71,7.71L9,20.42Z" />
         </svg>';
+            break;
+        case 'quoterefused':
+            $quoterefused= get_post_meta($post_id, 'quoterefused', true);
+            if($quoterefused == '1') echo '<svg class="svg-icon" style="width:24px;height:24px;vertical-align: middle;fill: red;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"><path d="M810.65984 170.65984q18.3296 0 30.49472 12.16512t12.16512 30.49472q0 18.00192-12.32896 30.33088l-268.67712 268.32896 268.67712 268.32896q12.32896 12.32896 12.32896 30.33088 0 18.3296-12.16512 30.49472t-30.49472 12.16512q-18.00192 0-30.33088-12.32896l-268.32896-268.67712-268.32896 268.67712q-12.32896 12.32896-30.33088 12.32896-18.3296 0-30.49472-12.16512t-12.16512-30.49472q0-18.00192 12.32896-30.33088l268.67712-268.32896-268.67712-268.32896q-12.32896-12.32896-12.32896-30.33088 0-18.3296 12.16512-30.49472t30.49472-12.16512q18.00192 0 30.33088 12.32896l268.32896 268.67712 268.32896-268.67712q12.32896-12.32896 30.33088-12.32896z"  /></svg>';
             break;
         case 'total_ht':
             echo get_field('total_ht', $post_id);
@@ -493,6 +502,7 @@ function acrm_devis_sortable_columns( $columns ) {
     $columns['total_ht'] = 'total_ht';
     $columns['quotesent'] = 'quotesent';
     $columns['quoteaccepted'] = 'quoteaccepted';
+    $columns['quoterefused'] = 'quoterefused';
     return $columns;
 }
 add_action( 'pre_get_posts', 'acrm_posts_orderby' );
@@ -531,6 +541,11 @@ function acrm_posts_orderby( $query ) {
     $query->set( 'meta_key', 'quoteaccepted' );
     $query->set( 'meta_type', 'numeric' );
   }
+  if ( 'quoterefused' === $query->get( 'orderby') ) {
+    $query->set( 'orderby', 'meta_value' );
+    $query->set( 'meta_key', 'quoterefused' );
+    $query->set( 'meta_type', 'numeric' );
+  }
 }
 
 
@@ -541,6 +556,7 @@ function acrm_add_custom_fields($post_id)
     if ( $_POST['post_type'] == 'devis' ) {
         add_post_meta($post_id, 'quotesent', '0', true);
         add_post_meta($post_id, 'quoteaccepted', '0', true);
+        add_post_meta($post_id, 'quoterefused', '0', true);
     }
     if ( $_POST['post_type'] == 'facture' ) {
         add_post_meta($post_id, 'invoicesent', '0', true);
@@ -557,17 +573,26 @@ function save_acrm_meta( $post_id ) {
 
       
     if($_POST['post_type'] == 'devis'){
+
         if ( isset( $_REQUEST['quotesent'] ) ) {
             update_post_meta( $post_id, 'quotesent', '1' );
         }
         else {
             update_post_meta( $post_id, 'quotesent', '0' );
         }
-        if ( isset( $_REQUEST['quoteaccepted'] ) ) {
+
+        if ( isset( $_REQUEST['quoteaccepted'] ) && !isset( $_REQUEST['quoterefused'] ) ) {
             update_post_meta( $post_id, 'quoteaccepted', '1' );
         }
         else {
             update_post_meta( $post_id, 'quoteaccepted', '0' );
+        }
+
+         if ( isset( $_REQUEST['quoterefused'] ) ) {
+            update_post_meta( $post_id, 'quoterefused', '1' );
+        }
+        else {
+            update_post_meta( $post_id, 'quoterefused', '0' );
         }
     }
 
