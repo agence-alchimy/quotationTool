@@ -34,7 +34,7 @@ services:
       - ./plugins:/var/www/html/wp-content/plugins:delegated
       - ./themes:/var/www/html/wp-content/themes:delegated
     ports:
-      - 80:80
+      - 80:8081
     restart: unless-stopped
     depends_on:
       - db
