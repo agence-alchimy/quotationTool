@@ -1,7 +1,7 @@
 version: "3.7"
 # from https://github.com/docker/awesome-compose/blob/master/official-documentation-samples/wordpress/README.md
 services:
-  db:
+  quotation_db:
     # We use a mariadb image which supports both amd64 & arm64 architecture
     image: mariadb:10.6.4-focal
     # If you really want to use MySQL, uncomment the following line
@@ -29,7 +29,7 @@ services:
       - 3307:3306
       - 33060:33060
 
-  wordpress:
+  quotation_wordpress:
     build: ./
     volumes:
       - ./wp_data:/var/www/html
@@ -55,7 +55,7 @@ services:
       - traefik_proxy
       - internal_quotation
     environment:
-      WORDPRESS_DB_HOST: db:3307
+      WORDPRESS_DB_HOST: quotation_db:3307
       WORDPRESS_DB_USER: ${DB_USER}
       WORDPRESS_DB_PASSWORD: ${DB_PASSWORD}
       WORDPRESS_DB_NAME: ${DB_NAME}
