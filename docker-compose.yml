@@ -23,9 +23,11 @@ services:
       MYSQL_DATABASE: ${DB_NAME}
       MYSQL_USER: ${DB_USER}
       MYSQL_PASSWORD: ${DB_PASSWORD}
-    expose:
-      - 3306
-      - 33060
+    networks:
+      - internal
+    ports:
+      - 3307:3306
+      - 33060:33060
 
   wordpress:
     build: ./
@@ -51,8 +53,9 @@ services:
       - "traefik.http.routers.quotation-pages-router.priority=2"
     networks:
       - traefik_proxy
+      - internal
     environment:
-      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_HOST: db:3307
       WORDPRESS_DB_USER: ${DB_USER}
       WORDPRESS_DB_PASSWORD: ${DB_PASSWORD}
       WORDPRESS_DB_NAME: ${DB_NAME}
@@ -68,3 +71,5 @@ networks:
   traefik_proxy:
     name: traefik_proxy
     external: true
+  internal:
+    name: internal
