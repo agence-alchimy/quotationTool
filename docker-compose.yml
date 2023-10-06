@@ -71,5 +71,5 @@ networks:
   traefik_proxy:
     name: traefik_proxy
     external: true
-  internal:
+  internal_quotation:
     name: internal_quotation
