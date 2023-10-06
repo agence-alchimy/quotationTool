@@ -38,6 +38,20 @@ services:
     restart: unless-stopped
     depends_on:
       - db
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.quotation.rule=PathPrefix(`/quotation`)"
+      - "traefik.http.routers.quotation.priority=2"
+      - "traefik.http.routers.quotation.entrypoints=websecure"
+      - "traefik.http.routers.quotation.tls=true"
+      - "traefik.http.routers.quotation.tls.certresolver=le-resolver"
+      - "traefik.frontend.passHostHeader=true"
+      - "traefik.frontend.headers.SSLRedirect=true"
+      - "traefik.docker.network=traefik_proxy"
+      - "traefik.http.routers.quotation-pages-router.priority=2"
+    networks:
+      - traefik_proxy
+      - internal
     environment:
       WORDPRESS_DB_HOST: db
       WORDPRESS_DB_USER: ${DB_USER}
