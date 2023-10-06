@@ -65,9 +65,6 @@ services:
         define( 'DB_CHARSET', 'utf8mb4' );
         define('WP_HOME', "https://alchimy.dev/quotation");
         define('WP_SITEURL', "https://alchimy.dev/quotation");
-        if (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https') {
-          $_SERVER['HTTPS'] = 'on';
-        }
 
 volumes:
   db_data:
