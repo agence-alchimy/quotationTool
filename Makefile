@@ -1,7 +1,7 @@
 ###
 ### VARIABLES
 ###
-APPLICATION_DOCKER_TAG ?= wordpress
+APPLICATION_DOCKER_TAG ?= quotationTool
 
 ###
 ### DOCKER
@@ -21,6 +21,16 @@ up: ## launching dockers
 	$(info --------------------------------)
 	$(info  )
 	docker compose up -d --build || echo "\033[0;31m ^^^ Error | launch ^^^ \033[0m"
+
+up-staging: ## launching dockers
+	$(info  )
+	$(info  launching ///////////////////////////////////////)
+	$(info )
+	$(info     [$(APPLICATION_DOCKER_TAG)])
+	$(info )
+	$(info --------------------------------)
+	$(info  )
+	docker compose -f docker-compose-staging.yml up -d --build || echo "\033[0;31m ^^^ Error | launch ^^^ \033[0m"
 
 ### REBUILD
 build: ## force building docker images again
@@ -43,6 +53,16 @@ stop: ## stopping dockers
 	$(info -------------------------------- \033[0m)
 	$(info  )
 	docker compose stop || echo "\033[0;31m ^^^ Error | stop ^^^ \033[0m"
+
+stop-staging: ## launching dockers
+	$(info  )
+	$(info  launching ///////////////////////////////////////)
+	$(info )
+	$(info     [$(APPLICATION_DOCKER_TAG)])
+	$(info )
+	$(info --------------------------------)
+	$(info  )
+	docker compose -f docker-compose-staging.yml stop || echo "\033[0;31m ^^^ Error | stop ^^^ \033[0m"
 
 ### BASH
 bash: ## access bash in wordpress container
