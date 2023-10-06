@@ -36,7 +36,7 @@ services:
       - ./plugins:/var/www/html/wp-content/plugins:delegated
       - ./themes:/var/www/html/wp-content/themes:delegated
     ports:
-      - 8081:80
+      - 8081:443
     restart: unless-stopped
     depends_on:
       - quotation_db
@@ -65,7 +65,6 @@ services:
         define( 'DB_CHARSET', 'utf8mb4' );
         define('WP_HOME', "https://alchimy.dev/quotation");
         define('WP_SITEURL', "https://alchimy.dev/quotation");
-        $_SERVER['HTTPS'] = 'on';
 
 volumes:
   db_data:
