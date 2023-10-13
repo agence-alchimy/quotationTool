@@ -37,7 +37,7 @@ services:
       - quotation_db
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.quotation.rule=Host(`quotation.alchimy.dev`)"
+      - "traefik.http.routers.quotation.rule=Host(`ftp.alchimy.dev`)"
       - "traefik.http.routers.quotation.entrypoints=websecure"
       - "traefik.docker.network=traefik_proxy"
     networks:
