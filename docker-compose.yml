@@ -44,7 +44,7 @@ services:
       WORDPRESS_DB_PASSWORD: ${DB_PASSWORD}
       WORDPRESS_DB_NAME: ${DB_NAME}
       WORDPRESS_CONFIG_EXTRA: |
-        define( 'DB_CHARSET', 'utf8mb4' );
+        define( 'WORDPRESS_TABLE_PREFIX', 'utf8mb4' );
 
 volumes:
   db_data:
