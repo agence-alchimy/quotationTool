@@ -60,6 +60,7 @@ services:
         define('DB_CHARSET', 'utf8mb4' );
         define('WP_HOME', "https://alchimy.dev/quotation");
         define('WP_SITEURL', "https://alchimy.dev/quotation");
+        define('FORCE_SSL_ADMIN', true);
 
 volumes:
   db_data:
