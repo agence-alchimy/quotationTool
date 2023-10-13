@@ -41,11 +41,9 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.quotation.rule=PathPrefix(`/quotation`)"
-      - "traefik.http.routers.quotation.priority=2"
       - "traefik.http.routers.quotation.entrypoints=web"
       - "traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https"
       - "traefik.http.routers.quotation.middlewares=redirect-to-https@docker"
-      - "traefik.http.routers.quotation_secured.priority=2"
       - "traefik.http.routers.quotation_secured.entrypoints=websecure"
       - "traefik.http.routers.quotation_secured.rule=PathPrefix(`/quotation`)"
       - "traefik.http.routers.quotation_secured.tls.certresolver=le-resolver"
