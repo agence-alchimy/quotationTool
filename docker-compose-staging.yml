@@ -26,7 +26,7 @@ services:
     networks:
       - internal_quotation
     ports:
-      - 3307:3306
+      - 3306:3306
       - 33060:33060
 
   quotation_wordpress:
@@ -44,12 +44,8 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.quotation.rule=PathPrefix(`/quotation`)"
-      - "traefik.http.routers.quotation.entrypoints=web"
-      - "traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https"
-      - "traefik.http.routers.quotation.middlewares=redirect-to-https@docker"
-      - "traefik.http.routers.quotation_secured.entrypoints=websecure"
-      - "traefik.http.routers.quotation_secured.rule=PathPrefix(`/quotation`)"
-      - "traefik.http.routers.quotation_secured.tls.certresolver=le-resolver"
+      - "traefik.http.routers.quotation.entrypoints=web,websecure"
+      - "traefik.http.routers.quotation.tls=true"
       - "traefik.docker.network=traefik_proxy"
       - "traefik.http.middlewares.redirectHeader.headers.customrequestheaders.X-Forwarded-Proto=https"
       - "traefik.http.routers.quotation.middlewares=redirectHeader"
@@ -58,7 +54,7 @@ services:
       - traefik_proxy
       - internal_quotation
     environment:
-      WORDPRESS_DB_HOST: quotation_db
+      WORDPRESS_DB_HOST: quotation_db:3306
       WORDPRESS_DB_USER: ${DB_USER}
       WORDPRESS_DB_PASSWORD: ${DB_PASSWORD}
       WORDPRESS_DB_NAME: ${DB_NAME}
