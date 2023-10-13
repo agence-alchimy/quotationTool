@@ -36,7 +36,7 @@ services:
       - ./plugins:/var/www/html/wp-content/plugins:delegated
       - ./themes:/var/www/html/wp-content/themes:delegated
     ports:
-      - 80:8081
+      - 8081:80
     restart: unless-stopped
     depends_on:
       - quotation_db
