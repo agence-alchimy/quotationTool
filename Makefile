@@ -75,6 +75,10 @@ logs-wp: ## display 100 last logs lines (WORDPRESS)
 logs-db: ## display 100 last logs lines (DB)
 	docker compose logs db --tail=100
 
+### INSTALL
+install:
+	cd plugins/alchimycrm && composer install
+
 ### EXPORT WORDPRESS
 wp-export: ## create a wordpress folder with a classic structure
 	cp -a ./wp_data/. ./wp_export/.
