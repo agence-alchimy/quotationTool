@@ -42,7 +42,6 @@ services:
       - "traefik.enable=true"
       - "traefik.http.routers.quotation.rule=PathPrefix(`/quotation`)"
       - "traefik.http.routers.quotation.entrypoints=web,websecure"
-      - "traefik.http.routers.quotation.tls=true"
       - "traefik.docker.network=traefik_proxy"
       - "traefik.http.middlewares.redirectHeader.headers.customrequestheaders.X-Forwarded-Proto=https"
       - "traefik.http.routers.quotation.middlewares=redirectHeader"
