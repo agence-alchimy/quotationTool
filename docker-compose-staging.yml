@@ -45,10 +45,8 @@ services:
       - "traefik.http.routers.quotation.rule=PathPrefix(`/quotation`)"
       - "traefik.http.routers.quotation.priority=2"
       - "traefik.http.routers.quotation.entrypoints=websecure"
-      - "traefik.http.routers.quotation.tls=true"
       - "traefik.http.routers.quotation.tls.certresolver=le-resolver"
       - "traefik.frontend.passHostHeader=true"
-      - "traefik.frontend.headers.SSLRedirect=true"
       - "traefik.docker.network=traefik_proxy"
       - "traefik.http.routers.quotation-pages-router.priority=2"
       - "traefik.http.middlewares.redirectHeader.headers.customrequestheaders.X-Forwarded-Proto=https"
@@ -64,7 +62,7 @@ services:
       WORDPRESS_TABLE_PREFIX: ${WORDPRESS_TABLE_PREFIX}
       WORDPRESS_DEBUG: ${WORDPRESS_DEBUG}
       WORDPRESS_CONFIG_EXTRA: |
-        define( 'DB_CHARSET', 'utf8mb4' );
+        define('DB_CHARSET', 'utf8mb4' );
         define('WP_HOME', "http://alchimy.dev/quotation");
         define('WP_SITEURL', "http://alchimy.dev/quotation");
 
