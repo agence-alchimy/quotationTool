@@ -49,6 +49,8 @@ services:
       - "traefik.http.routers.quotation.tls.certresolver=le-resolver"
       - "traefik.docker.network=traefik_proxy"
       - "traefik.http.routers.quotation-pages-router.priority=2"
+      - "traefik.http.middlewares.redirectHeader.headers.customrequestheaders.X-Forwarded-Proto=https"
+      - "traefik.http.routers.quotation.middlewares=redirectHeader"
 
     networks:
       - traefik_proxy
