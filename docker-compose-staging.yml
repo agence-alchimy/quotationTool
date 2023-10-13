@@ -64,7 +64,6 @@ services:
       WORDPRESS_DEBUG: ${WORDPRESS_DEBUG}
       WORDPRESS_CONFIG_EXTRA: |
         define('DB_CHARSET', 'utf8mb4' );
-        define('FORCE_SSL_ADMIN', true);
 
 volumes:
   db_data:
