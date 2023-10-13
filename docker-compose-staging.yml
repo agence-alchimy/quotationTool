@@ -42,11 +42,9 @@ services:
       - "traefik.enable=true"
       - "traefik.http.routers.quotation.rule=PathPrefix(`/quotation`)"
       - "traefik.http.routers.quotation.priority=2"
-      - "traefik.frontend.passHostHeader=true"
       - "traefik.http.routers.quotation.tls.certresolver=le-resolver"
       - "traefik.docker.network=traefik_proxy"
       - "traefik.http.routers.quotation-pages-router.priority=2"
-
     networks:
       - traefik_proxy
       - internal_quotation
