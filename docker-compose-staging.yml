@@ -38,19 +38,18 @@ services:
     restart: unless-stopped
     depends_on:
       - quotation_db
-    ports:
-      - 8081:80
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.quotation.rule=PathPrefix(`/quotation`)"
       - "traefik.http.routers.quotation.priority=2"
-      - "traefik.http.routers.quotation.entrypoints=websecure"
-      - "traefik.http.routers.quotation.tls=true"
+      - "traefik.http.routers.quotation.entrypoints=web"
+      - "traefik.http.routers.quotation_secured.priority=2"
+      - "traefik.http.routers.quotation_secured.entrypoints=websecure"
+      - "traefik.http.routers.quotation_secured.rule=PathPrefix(`/quotation`)"
+      - "traefik.http.routers.quotation_secured.tls.certresolver=le-resolver"
       - "traefik.frontend.passHostHeader=true"
       - "traefik.frontend.headers.SSLRedirect=true"
-      - "traefik.http.routers.quotation.tls.certresolver=le-resolver"
       - "traefik.docker.network=traefik_proxy"
-      - "traefik.port=8081"
 
     networks:
       - traefik_proxy
