@@ -39,7 +39,7 @@ services:
     depends_on:
       - quotation_db
     ports:
-      - 8080:80
+      - 8081:80
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.quotation.rule=PathPrefix(`/quotation`)"
@@ -50,7 +50,7 @@ services:
       - "traefik.frontend.headers.SSLRedirect=true"
       - "traefik.http.routers.quotation.tls.certresolver=le-resolver"
       - "traefik.docker.network=traefik_proxy"
-      - "traefik.port=8080"
+      - "traefik.port=8081"
 
     networks:
       - traefik_proxy
@@ -65,6 +65,8 @@ services:
       WORDPRESS_CONFIG_EXTRA: |
         define('DB_CHARSET', 'utf8mb4' );
         define('FORCE_SSL_ADMIN', true);
+        define('WP_HOME', "https://alchimy.dev/quotation");
+        define('WP_SITEURL', "https://alchimy.dev/quotation");
 
 volumes:
   db_data:
