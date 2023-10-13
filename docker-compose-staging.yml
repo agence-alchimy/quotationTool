@@ -51,7 +51,6 @@ services:
       - "traefik.frontend.headers.SSLRedirect=true"
       - "traefik.docker.network=traefik_proxy"
       - "traefik.http.routers.quotation-pages-router.priority=2"
-      - "traefik.http.middlewares.https-redirect.headers.customrequestheaders.X-Forwarded-Proto=https"
     networks:
       - traefik_proxy
       - internal_quotation
