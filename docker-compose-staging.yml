@@ -40,7 +40,7 @@ services:
       - quotation_db
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.quotation.rule=PathPrefix(`/quotation`)"
+      - "traefik.http.routers.quotation.rule=Host(`quotation.alchimy.dev`)"
       - "traefik.http.routers.quotation.entrypoints=web,websecure"
       - "traefik.http.routers.quotation.tls=true"
       - "traefik.docker.network=traefik_proxy"
