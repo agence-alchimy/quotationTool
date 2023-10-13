@@ -64,8 +64,8 @@ services:
       WORDPRESS_DEBUG: ${WORDPRESS_DEBUG}
       WORDPRESS_CONFIG_EXTRA: |
         define( 'DB_CHARSET', 'utf8mb4' );
-        define('WP_HOME', "alchimy.dev/quotation");
-        define('WP_SITEURL', "alchimy.dev/quotation");
+        define('WP_HOME', "http://alchimy.dev/quotation");
+        define('WP_SITEURL', "http://alchimy.dev/quotation");
 
 volumes:
   db_data:
