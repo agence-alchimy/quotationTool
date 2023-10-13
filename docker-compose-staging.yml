@@ -33,9 +33,6 @@ services:
       - ./plugins:/var/www/html/wp-content/plugins:delegated
       - ./themes:/var/www/html/wp-content/themes:delegated
     restart: unless-stopped
-    expose:
-      - "80"
-      - "443"
     depends_on:
       - quotation_db
     labels:
