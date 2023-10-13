@@ -39,7 +39,7 @@ services:
     depends_on:
       - quotation_db
     ports:
-      - 8081:8081
+      - 443:8081
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.quotation.rule=PathPrefix(`/quotation`)"
