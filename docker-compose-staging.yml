@@ -39,6 +39,7 @@ services:
       - "traefik.enable=true"
       - "traefik.http.routers.quotation.rule=Host(`quotation.alchimy.dev`)"
       - "traefik.http.routers.quotation.entrypoints=websecure"
+      - "traefik.http.routers.quotation.tls=true"
       - "traefik.http.routers.quotation.tls.certresolver=le-resolver"
       - "traefik.docker.network=traefik_proxy"
     networks:
