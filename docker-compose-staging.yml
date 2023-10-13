@@ -37,12 +37,9 @@ services:
       - quotation_db
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.quotation.rule=PathPrefix(`/quotation`)"
-      - "traefik.http.routers.quotation.entrypoints=web,websecure"
+      - "traefik.http.routers.quotation.rule=Host(`quotation.alchimy.dev`)"
+      - "traefik.http.routers.quotation.entrypoints=websecure"
       - "traefik.docker.network=traefik_proxy"
-      - "traefik.http.middlewares.redirectHeader.headers.customrequestheaders.X-Forwarded-Proto=https"
-      - "traefik.http.routers.quotation.middlewares=redirectHeader"
-
     networks:
       - traefik_proxy
       - internal_quotation
@@ -54,10 +51,6 @@ services:
       WORDPRESS_TABLE_PREFIX: ${WORDPRESS_TABLE_PREFIX}
       WORDPRESS_DB_CHARSET: ${WORDPRESS_DB_CHARSET}
       WORDPRESS_DEBUG: ${WORDPRESS_DEBUG}
-      WORDPRESS_CONFIG_EXTRA: |
-        define('WP_HOME', "https://alchimy.dev/quotation/");
-        define('WP_SITEURL', "https://alchimy.dev/quotation/");
-        define('FORCE_SSL_ADMIN', true);
 
 volumes:
   db_data:
