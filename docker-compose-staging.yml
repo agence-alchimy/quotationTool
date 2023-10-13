@@ -36,8 +36,9 @@ services:
       - ./plugins:/var/www/html/wp-content/plugins:delegated
       - ./themes:/var/www/html/wp-content/themes:delegated
     restart: unless-stopped
-    ports:
-      - "8081:8081"
+    expose:
+      - "80"
+      - "443"
     depends_on:
       - quotation_db
     labels:
@@ -50,7 +51,6 @@ services:
       - "traefik.http.routers.quotation_secured.rule=PathPrefix(`/quotation`)"
       - "traefik.http.routers.quotation_secured.tls.certresolver=le-resolver"
       - "traefik.docker.network=traefik_proxy"
-      - "traefik.http.services.quotation.loadbalancer.server.port=8081"
 
     networks:
       - traefik_proxy
