@@ -39,7 +39,7 @@ services:
     depends_on:
       - quotation_db
     ports:
-      - 8081:80
+      - 8080:80
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.quotation.rule=PathPrefix(`/quotation`)"
@@ -50,7 +50,7 @@ services:
       - "traefik.frontend.headers.SSLRedirect=true"
       - "traefik.http.routers.quotation.tls.certresolver=le-resolver"
       - "traefik.docker.network=traefik_proxy"
-      - "traefik.port=8081"
+      - "traefik.port=8080"
 
     networks:
       - traefik_proxy
