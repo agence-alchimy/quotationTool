@@ -78,6 +78,7 @@ logs-db: ## display 100 last logs lines (DB)
 ### INSTALL
 install:
 	cd plugins/alchimycrm && composer install --ignore-platform-reqs
+	mkdir -p ./plugins/alchimycrm/vendor/tecnickcom/fonts/
 	cp -a ./plugins/alchimycrm/fonts/. ./plugins/alchimycrm/vendor/tecnickcom/fonts/.
 
 ### EXPORT WORDPRESS
