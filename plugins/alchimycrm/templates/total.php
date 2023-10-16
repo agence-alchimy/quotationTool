@@ -33,14 +33,14 @@
                         <p style="margin:0; margin-bottom: 5pt;" class="">Acompte (50%) :</p>
                     </td>
                     <td style="width: 20%; vertical-align:middle; text-align: right;">
-                        <p style="margin:0; margin-bottom: 5pt;" class="light"><?php echo number_format($total_ht, 2, ',', '.'); ?> &euro;</p>
-                        <p style="margin:0; margin-bottom: 5pt;" class="light"><?php echo number_format($total_ht*TVA, 2, ',', '.'); ?> &euro;</p>
+                        <p style="margin:0; margin-bottom: 5pt;" class="light"><?php echo str_replace(',00', '',number_format($total_ht, 2, ',', '.')); ?> &euro;</p>
+                        <p style="margin:0; margin-bottom: 5pt;" class="light"><?php echo str_replace(',00', '',number_format($total_ht*TVA, 2, ',', '.')); ?> &euro;</p>
                         <?php if($total_remise > 0) : ?>
-                        <p style="margin:0; margin-bottom: 5pt;" class=""><?php echo number_format($total_remise, 2, ',', '.'); ?> &euro;</p>
+                        <p style="margin:0; margin-bottom: 5pt;" class=""><?php echo str_replace(',00', '',number_format($total_remise, 2, ',', '.')); ?> &euro;</p>
                         <?php endif; ?>
-                        <p style="margin:0; margin-bottom: 5pt;" class="light"><?php echo number_format($total_ttc, 2, ',', '.'); ?> &euro;</p>
+                        <p style="margin:0; margin-bottom: 5pt;" class="light"><?php echo str_replace(',00', '',number_format($total_ttc, 2, ',', '.')); ?> &euro;</p>
                         <br />
-                        <p style="margin:0; margin-bottom: 5pt;" class="light"><?php echo number_format($total_ttc/2, 2, ',', '.'); ?> &euro;</p>
+                        <p style="margin:0; margin-bottom: 5pt;" class="light"><?php echo str_replace(',00', '',number_format($total_ttc/2, 2, ',', '.')); ?> &euro;</p>
                         
                     </td>
                 </tr>

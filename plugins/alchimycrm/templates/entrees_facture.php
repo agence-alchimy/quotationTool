@@ -34,7 +34,7 @@
             ?>
             </em>
             </td>
-            <td style="width:15%; text-align: right; padding: 10pt 0 "><?php echo (!empty($service['tarif'])) ?  number_format($service['tarif'], 2, ',', '.').' &euro; HT' : 'OFFERT'; ?></td>
+            <td style="width:15%; text-align: right; padding: 10pt 0 "><?php echo (!empty($service['tarif'])) ?  str_replace(',00', '',number_format($service['tarif'], 2, ',', '.')).' &euro; HT' : 'OFFERT'; ?></td>
         </tr>
         <?php if($k<$num-1): ?>
         <tr>

@@ -74,14 +74,14 @@
                 </td>
                 <td style="width:20%; padding-top:11mm; " class="chiffres">
                     <p class="light">
-                        <?php echo number_format($total_ht, 2, ',', '.'); ?> &euro;
+                        <?php echo str_replace(',00', '',number_format($total_ht, 2, ',', '.')); ?> &euro;
                     </p>
                     <p class="light">
-                        <?php echo number_format($total_ht * TVA, 2, ',', '.'); ?> &euro;
+                        <?php echo str_replace(',00', '',number_format($total_ht * TVA, 2, ',', '.')); ?> &euro;
                     </p>
                     <br>
                     <p class="bold">
-                        <?php echo number_format($total_ttc, 2, ',', '.'); ?> &euro;
+                        <?php echo str_replace(',00', '',number_format($total_ttc, 2, ',', '.')); ?> &euro;
                     </p>
                 </td>
             </tr>

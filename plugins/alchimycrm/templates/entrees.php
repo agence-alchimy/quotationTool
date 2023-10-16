@@ -61,7 +61,7 @@
                     <?php if(empty($prestation['tarif'])) : ?>
                     <h3>OFFERT</h3>
                     <?php else: ?>
-                    <h3><?php echo number_format($n*$prestation['tarif'], 2, ',', '.'); ?> &euro; HT</h3>
+                    <h3><?php echo str_replace(',00', '',number_format($n*$prestation['tarif'], 2, ',', '.')); ?> &euro; HT</h3>
                     <?php endif; ?>
                 </td>
             </tr>
