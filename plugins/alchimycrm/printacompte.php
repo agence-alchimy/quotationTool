@@ -4,7 +4,7 @@ global $wp, $wp_query, $wp_the_query, $wp_rewrite, $wp_did_header;
 require('../../../wp-load.php');
 $post = $_GET['p'];
 $postInfos = get_post($post);
-$acfs = get_fields($post->ID);
+$acfs = get_fields($postInfos->ID);
 $postInfos->acfs = $acfs;
 define('TVA', 0.2);
 require __DIR__.'/vendor/autoload.php';
