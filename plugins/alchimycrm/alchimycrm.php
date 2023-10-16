@@ -624,7 +624,17 @@ function save_acrm_meta( $post_id ) {
             update_post_meta( $post_id, 'acomptepaid', '0' );
         }
     }
+    
 
 }
 add_action( 'save_post', 'save_acrm_meta' );
 add_action( 'edit_post', 'save_acrm_meta' );
+function my_acf_fields_post_object_result( $text, $post, $field, $post_id ) {
+    $customer = get_field( 'client', $post->ID );
+
+    if( $customer && count($customer) > 0) {
+        $text .= ' ' . sprintf( '(%s)', $customer[0]->post_title );
+    }
+    return $text;
+}
+add_filter('acf/fields/post_object/result', 'my_acf_fields_post_object_result', 10, 4);

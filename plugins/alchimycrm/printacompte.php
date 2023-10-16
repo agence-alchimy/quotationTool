@@ -31,11 +31,11 @@ $m = $date[1]-1;
 $mois = array('Jan.', 'Fév.', 'Mar.', 'Avr.', 'Mai.', 'Juin', 'Jui.', 'Aou.', 'Sep.', 'Oct.', 'Nov.', 'Déc.');
 $postInfos->acfs['Date'] = $date[0] . ' ' . $mois[$m] . ' ' . $date[2];
 //echo $postInfos->acfs['reference'];
+
 $quote = get_posts(array(
     'numberposts'   => -1,
     'post_type'     => 'devis',
-    'meta_key'      => 'reference',
-    'meta_value'    => $postInfos->acfs['ref_devis']
+    'id'      => $postInfos->acfs['ref_devis']
 ));
 
 if(!isset($quote) || count($quote) <= 0 || !key_exists(0, $quote)){
@@ -43,8 +43,7 @@ if(!isset($quote) || count($quote) <= 0 || !key_exists(0, $quote)){
 }
 
 $quote[0]->fields = get_fields($quote[0]->ID);
-//echo $quote[0]->fields['Date'];
-//die();
+
 $content = '';
 $content .= get_pdf_template('styles');
 $content .= get_pdf_template('entete_acompte', array(
@@ -59,9 +58,8 @@ $content .= get_pdf_template('entete_acompte', array(
     'total_ht'=>$postInfos->acfs['total_ht'],
     'total_ttc'=>$postInfos->acfs['total_ttc'],
     'pourcentage'=>$postInfos->acfs['pourcentage'],
-    'ref_devis'=>$postInfos->acfs['ref_devis'],
+    'ref_devis'=>$quote[0]->fields['reference'],
     'date_devis'=>$quote[0]->fields['Date']
-
 ));
 
 $html2pdf->pdf->SetDisplayMode('fullpage');
