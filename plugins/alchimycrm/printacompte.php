@@ -37,6 +37,11 @@ $quote = get_posts(array(
     'meta_key'      => 'reference',
     'meta_value'    => $postInfos->acfs['ref_devis']
 ));
+
+if(!isset($quote)){
+    return wp_send_json_error('Mauvaise réfèrence de devis.', 404);
+}
+
 $quote[0]->fields = get_fields($quote[0]->ID);
 //echo $quote[0]->fields['Date'];
 //die();
