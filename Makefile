@@ -30,7 +30,7 @@ up-staging: ## launching dockers
 	$(info )
 	$(info --------------------------------)
 	$(info  )
-	docker compose -f docker-compose-staging.yml up -d --build || echo "\033[0;31m ^^^ Error | launch ^^^ \033[0m"
+	docker compose -f docker-compose-staging.yml up -d --build --remove-orphans || echo "\033[0;31m ^^^ Error | launch ^^^ \033[0m"
 
 ### REBUILD
 build: ## force building docker images again
