@@ -62,7 +62,7 @@ stop-staging: ## launching dockers
 	$(info )
 	$(info --------------------------------)
 	$(info  )
-	docker compose -f docker-compose-staging.yml stop --remove-orphans || echo "\033[0;31m ^^^ Error | stop ^^^ \033[0m"
+	docker compose -f docker-compose-staging.yml stop || echo "\033[0;31m ^^^ Error | stop ^^^ \033[0m"
 
 ### BASH
 bash: ## access bash in wordpress container
