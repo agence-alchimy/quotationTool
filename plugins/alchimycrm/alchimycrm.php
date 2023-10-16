@@ -40,6 +40,7 @@ function add_ajax()
 add_action('wp_ajax_retrieveDesc', 'sendDesc');
 function sendDesc(){
     $post_title = sanitize_title($_POST['post']);
+
     // $args = array("post_type" => "service", "post_name" => $post_title);
     // var_dump($args);
     // $posts = get_posts($args);
@@ -48,6 +49,7 @@ function sendDesc(){
     // }
     // var_dump($posts);
     //wp_send_json_success($posts[0]);
+    
     global $wpdb;
     $reqp = "SELECT ID, post_content, post_title FROM {$wpdb->posts} WHERE post_name = '{$post_title}' AND post_type='service'";
     $req = $wpdb->get_results($reqp);
@@ -638,3 +640,13 @@ function my_acf_fields_post_object_result( $text, $post, $field, $post_id ) {
     return $text;
 }
 add_filter('acf/fields/post_object/result', 'my_acf_fields_post_object_result', 10, 4);
+
+function update_service_slug_to_sanitized_title( $data, $postarr ) {
+
+    if ( ! in_array( $data['post_status'], array( 'draft', 'pending', 'auto-draft' ) ) && $data['post_type'] == "service" ) {
+        $data['post_name'] = sanitize_title( $data['post_title'] );
+    }
+
+    return $data;
+}
+add_filter( 'wp_insert_post_data', 'update_service_slug_to_sanitized_title', 99, 2 );
