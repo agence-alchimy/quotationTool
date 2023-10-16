@@ -38,7 +38,7 @@ $quote = get_posts(array(
     'meta_value'    => $postInfos->acfs['ref_devis']
 ));
 
-if(!isset($quote) && count($quote) <= 0){
+if(!isset($quote) || count($quote) <= 0 || !key_exists(0, $quote)){
     return wp_send_json_error('Mauvaise réfèrence de devis.', 404);
 }
 
