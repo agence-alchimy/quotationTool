@@ -39,7 +39,7 @@ $quote = get_posts(array(
 ));
 
 if(!isset($quote) || count($quote) <= 0 || !key_exists(0, $quote)){
-    return wp_send_json_error('Mauvaise réfèrence de devis.', 404);
+    return wp_send_json_error('Devis non trouvé; vérifiez la réfèrence.', 404);
 }
 
 $quote[0]->fields = get_fields($quote[0]->ID);
