@@ -3,7 +3,7 @@ global $wp, $wp_query, $wp_the_query, $wp_rewrite, $wp_did_header;
 require('../../../wp-load.php');
 $post = $_GET['p'];
 $postInfos = get_post($post);
-$acfs = get_fields($post);
+$acfs = get_fields($postInfos->ID);
 $postInfos->acfs = $acfs;
 define('TVA', 0.2);
 require __DIR__.'/vendor/autoload.php';
@@ -30,9 +30,9 @@ function get_pdf_template($templateName, $args = array())
 }
 
 $html2pdf = new Html2Pdf();
-$html2pdf->addFont('aktivgrotesk-bold', '',  '/fonts/aktivgrotesk-bold.php');
-$html2pdf->addFont('aktivgrotesk-regular', '',  '/fonts/aktivgrotesk-regular.php');
-$html2pdf->addFont('aktivgrotesk-light', '',  '/fonts/aktivgrotesk-light.php');
+$html2pdf->addFont('aktivgrotesk-bold', '',  'aktivgrotesk-bold.php');
+$html2pdf->addFont('aktivgrotesk-regular', '',  'aktivgrotesk-regular.php');
+$html2pdf->addFont('aktivgrotesk-light', '',  'aktivgrotesk-light.php');
 //$html2pdf->SetFontSpacing(3);
 $html2pdf->setDefaultFont('aktivgrotesk-bold');
 
