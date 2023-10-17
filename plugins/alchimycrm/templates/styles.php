@@ -13,7 +13,11 @@ p.listitem {
     margin-left: 5px;
     margin-bottom: 10px;
     margin-top: 0;
-   
+}
+
+body { 
+    padding:0!important; 
+    margin:0 !important;
 }
 
 p.listitem span {
@@ -90,9 +94,9 @@ ul li span {
     font-size: 6pt;
     font-weight: bold;
 }
-.contenu{
+/* .contenu{
     height: 100%;
-}
+} */
 .contenu h2 {
     font-size: 24pt;
 }
@@ -108,11 +112,10 @@ ul li span {
     font-family: aktivgrotesk-light;
     font-size: 8.5pt;
     line-height: 13pt;
-    
 }
 .entry p.listitem {
     padding-left: 10px;
-    margin-bottom: 10px;
+    /* margin-bottom: 10px; */
     margin-top: 0;
 }
 .entry p.listitem span {
@@ -125,8 +128,8 @@ h4 {
 
 }
 .desc {
-    width: 70%;
-
+    width: 80%;
+    padding-bottom: 20px;
 }
 #cgv h2 {
     font-size: 12pt;

@@ -12,6 +12,6 @@
             </table>
         </div>
     </page_header>
-    <h1 style="">Préambule</h1>
+    <h1 >Préambule</h1>
     <div id="preamb" style="font-weight: bold; line-height: 16px; font-height: 12px; text-transform: uppercase;"><?php echo $intro; ?></div>
 </page>

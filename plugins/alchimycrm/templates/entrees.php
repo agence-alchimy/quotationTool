@@ -16,19 +16,20 @@
             <p class="light" style="font-size: 6pt">L’ensemble des informations remises à travers ce document demeurent la propriété exclusive de l’agence Alchimy. Vous n’êtes autorisés en aucun cas à diffuser ou divulguer à un tiers les éléments communiqués sans autorisation écrite de notre agence.</p>
         </div>
     </page_footer>
-<div class="contenu">
+<div>
     <?php 
     foreach($entrees as $entry):
 
     ?>
-    <div class="entry" style="margin-top: 50px; margin-bottom: 50px; ">
-        <table style="width: 100%; border: 0;">
-            <tr>
-                <td style="width:70%">
-                    <h2 style=""><?php echo $entry['titre']; ?></h2>
-                </td>
-            </tr>
-        </table>
+        <?php if(empty($prestations)):?>
+            <table style=" border: 0;">
+                <tr>
+                    <td >
+                        <h2 style=""><?php echo $entry['titre']; ?></h2>
+                    </td>
+                </tr>
+            </table>
+        <?php endif;?>
         <?php
         $i++;
         $prestations = $entry['prestations'];
@@ -37,16 +38,25 @@
         $j = 0;
         
         foreach($prestations as $prestation): $j++;
-       
         ?>
-        
         <nobreak>
-        <table style="width: 100%; border: 0; ">
+        <?php if($j <= 0): ?>
+        <table style=" border: 0;">
+                <tr>
+                    <td>
+                        <h2 style=""><?php echo $entry['titre']; ?></h2>
+                    </td>
+                </tr>
+            </table>
+        <?php endif;?>
+        
+       
+        <table class="entry"  style="width: 500px; border: 0; padding-top: 30px">
             <tr>
-                <td style="width:60%">
-                    <h3><?php echo $prestation['titre']; ?></h3>
+                <td >
+                    <h3><?php echo wordwrap($prestation['titre'], 40, '<br/>', true); ?></h3>
                 </td>
-                <td style="width:20%; text-align: right">
+                <td >
                 <?php
                 $n = 1;
                 if($prestation['nombre'] > 1):
@@ -57,7 +67,7 @@
                 endif;
                 ?>
                 </td>
-                <td style="width: 20%; text-align: right">
+                <td style="text-align: right;">
                     <?php if(empty($prestation['tarif'])) : ?>
                     <h3>OFFERT</h3>
                     <?php else: ?>
@@ -76,10 +86,9 @@
         
         <?php endif; ?>
         <?php
-        if($j < $npresta) echo '<hr style="border:0; border-top: 0.2pt solid #999; margin-top:30px; margin-bottom: 10px;"/>';
+        if($j < $npresta) echo '<hr style="border:0; border-top: 0.2pt solid #999; margin-top:40px;"/>';
         endforeach; endif;
         ?>
-    </div>
     <?php
     endforeach;
     
