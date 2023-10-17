@@ -109,7 +109,7 @@ ul li span {
 }
 .entry p {
     margin:0;
-    padding-top: 10px;
+   
     font-family: aktivgrotesk-light;
     font-size: 8.5pt;
     line-height: 13pt;
@@ -128,6 +128,9 @@ h4 {
     font-size: 8pt;
     text-transform: uppercase;
 
+}
+.desc strong{
+    margin-top: 10px;
 }
 .desc {
     width: 80%;
