@@ -109,12 +109,14 @@ ul li span {
 }
 .entry p {
     margin:0;
+    padding-top: 10px;
     font-family: aktivgrotesk-light;
     font-size: 8.5pt;
     line-height: 13pt;
 }
 .entry p.listitem {
     padding-left: 10px;
+
     /* margin-bottom: 10px; */
     margin-top: 0;
 }
