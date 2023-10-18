@@ -552,11 +552,6 @@ function acrm_posts_orderby( $query ) {
     $query->set( 'meta_key', 'quoteaccepted' );
     $query->set( 'meta_type', 'numeric' );
   }
-  if ( 'quoterefused' === $query->get( 'orderby') ) {
-    $query->set( 'orderby', 'meta_value' );
-    $query->set( 'meta_key', 'quoterefused' );
-    $query->set( 'meta_type', 'numeric' );
-  }
 }
 
 
