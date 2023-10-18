@@ -15,29 +15,33 @@
     <div style="width:100%;  position:absolute; bottom:0; ">
         <p style="text-align: center; color:#C6C6C5; font-size: 6pt" class="light">LA SIGNATURE DE CE DEVIS VAUT POUR ACCEPTATION DES CONDITIONS GÉNÉRALES DE VENTES JOINTES.</p>
         <div style="background-color:#f7f7f7; margin:auto; margin-bottom: 25px;">
-            <table style="width: 100%; border:0; padding: 7mm;">
+            <table style="width: 100%; border:0; padding: 7mm; border-collapse: collapse;">
                 <tr>
-                    <td style="width:60%">
+                    <td style="width:55%">
                         <p style="font-size: 8pt; margin-bottom: 0; margin-top:0;">DATE ET SIGNATURE :</p>
                         <p style="font-size: 8pt; margin-top: 3pt;" class="light">Accompagné de la mention<br />"lu et approuvé"</p>
                         <p style="font-size: 7pt; margin-top: 22mm; margin-bottom:0;"><strong>Conditions de réglement</strong> <span class="light">: 30 jours</span><br /><strong>Mode de réglement</strong> <span class="light">: Chèque ou Virement bancaire</span></p>
                     </td>
-                    <td style="width:20%; vertical-align:middle;">
+                    <td style="width:25%; vertical-align:middle; border: 0;">
                         <p style="margin:0; margin-bottom: 5pt;" class="light">Total HT :</p>
-                        <p style="margin:0; margin-bottom: 5pt;" class="light">TVA (20%) :</p>
                         <?php if($total_remise > 0) : ?>
-                        <p style="margin:0; margin-bottom: 5pt;" class="">Total remise :</p>
+                            <p style="margin:0; margin-bottom: 5pt;" class="light">Remise :</p>
+                            <p style="margin:0; margin-bottom: 5pt;" class="">Total après remise :</p>
                         <?php endif; ?>
+                        <p style="margin:0; margin-bottom: 5pt; " class="light">TVA (20%) :</p>
+                        <div style="margin:0; padding:0; box-sizing:border-box; border:0; background: black;"/>
                         <p style="margin:0; margin-bottom: 5pt;" class="">Total TTC :</p>
                         <br />
                         <p style="margin:0; margin-bottom: 5pt;" class="">Acompte (50%) :</p>
                     </td>
-                    <td style="width: 20%; vertical-align:middle; text-align: right;">
-                        <p style="margin:0; margin-bottom: 5pt;" class="light"><?php echo str_replace(',00', '',number_format($total_ht, 2, ',', '.')); ?> &euro;</p>
-                        <p style="margin:0; margin-bottom: 5pt;" class="light"><?php echo str_replace(',00', '',number_format($total_ht*TVA, 2, ',', '.')); ?> &euro;</p>
+                    <td style="width: 20%; vertical-align:middle; text-align: right; border: 0;">
+                        <p style="margin:0; margin-bottom: 5pt;" class="light"><?php echo str_replace(',00', '',number_format($total_ht + $total_remise, 2, ',', '.')); ?> &euro;</p>
                         <?php if($total_remise > 0) : ?>
-                        <p style="margin:0; margin-bottom: 5pt;" class=""><?php echo str_replace(',00', '',number_format($total_remise, 2, ',', '.')); ?> &euro;</p>
+                            <p style="margin:0; margin-bottom: 5pt;" class="light"><?php echo "- ".str_replace(',00', '',number_format($total_remise, 2, ',', '.')); ?> &euro;</p>
+                            <p style="margin:0; margin-bottom: 5pt;" class=""><?php echo str_replace(',00', '',number_format($total_ht, 2, ',', '.')); ?> &euro;</p>
                         <?php endif; ?>
+                        <p style="margin:0; margin-bottom: 5pt;" class="light"><?php echo "+ ".str_replace(',00', '',number_format($total_ht*TVA, 2, ',', '.')); ?> &euro;</p>
+                        <div style="width: 175px;left:0; margin:0; padding:0; margin-left:-150px; box-sizing:border-box; border:0; background: black;"/>
                         <p style="margin:0; margin-bottom: 5pt;" class="light"><?php echo str_replace(',00', '',number_format($total_ttc, 2, ',', '.')); ?> &euro;</p>
                         <br />
                         <p style="margin:0; margin-bottom: 5pt;" class="light"><?php echo str_replace(',00', '',number_format($total_ttc/2, 2, ',', '.')); ?> &euro;</p>
