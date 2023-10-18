@@ -12,6 +12,11 @@
             </table>
         </div>
     </page_header>
+    <page_footer>
+        <div class="footer">
+            <p class="light" style="font-size: 6pt">L’ensemble des informations remises à travers ce document demeurent la propriété exclusive de l’agence Alchimy. Vous n’êtes autorisés en aucun cas à diffuser ou divulguer à un tiers les éléments communiqués sans autorisation écrite de notre agence.</p>
+        </div>
+    </page_footer>
     <h1 >Préambule</h1>
     <div id="preamb" style="font-weight: bold; line-height: 16px; font-height: 12px; text-transform: uppercase;"><?php echo $intro; ?></div>
 </page>
