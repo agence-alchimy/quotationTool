@@ -1,0 +1,26 @@
+.acf-field[data-name=prestations] .acf-table td {
+  margin: 0;
+}
+.acf-field[data-name=prestations] .acf-row .acf-row-handle:last-child {
+  z-index: 3;
+}
+.acf-field[data-name=prestations] .acf-row .acf-row-handle::after {
+  content: "";
+  height: calc(5rem + 1px);
+  background-color: white;
+  position: absolute;
+  display: block;
+  bottom: 0;
+  width: calc(100% + 20px);
+  left: -10px;
+  z-index: 2;
+}
+.acf-field[data-name=prestations] .acf-row > .acf-fields {
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: #eaecf0;
+}
+.acf-field[data-name=prestations] .acf-row > .acf-fields .acf-field:last-child {
+  margin-bottom: 5rem;
+  border-bottom: 1px solid #eaecf0;
+}/*# sourceMappingURL=admin.css.map */

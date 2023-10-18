@@ -1,0 +1,38 @@
+.acf-field[data-name="prestations"] {
+  .acf-table {
+    td {
+      margin: 0;
+    }
+  }
+  .acf-row {
+    $bottom-margin: 5rem;
+    .acf-row-handle {
+      &:last-child {
+        z-index: 3;
+      }
+      &::after {
+        content: "";
+        height: calc($bottom-margin + 1px);
+        background-color: white;
+        position: absolute;
+        display: block;
+        bottom: 0;
+        width: calc(100% + 20px);
+        left: -10px;
+        z-index: 2;
+      }
+    }
+    & > .acf-fields {
+      //   background: red !important;
+
+      .acf-field:last-child {
+        margin-bottom: $bottom-margin;
+        border-bottom: 1px solid #eaecf0;
+      }
+
+      border-bottom-width: 1px;
+      border-bottom-style: solid;
+      border-bottom-color: #eaecf0;
+    }
+  }
+}

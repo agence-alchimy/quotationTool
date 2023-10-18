@@ -17,6 +17,15 @@ function acrm_enqueue( $hook ) {
 		'1.0.0',
 		true
 	);
+
+    wp_enqueue_style(
+		'admin',
+		plugins_url( '/css/admin.css', __FILE__ ),
+		array(),
+		time()
+	);
+
+
 }
 // add_action('acfe/fields/button/name=copier', 'my_acf_button_ajax', 10, 2);
 // function my_acf_button_ajax($field, $post_id){

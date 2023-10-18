@@ -1,4 +1,9 @@
 <style type="text/css">
+
+.acf-fields[data-name="prestations"]{
+    border : 1px solid red !important;
+}
+
 .pb {
     margin-bottom: 100mm;
 }

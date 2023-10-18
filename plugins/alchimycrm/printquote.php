@@ -29,7 +29,7 @@ function get_pdf_template($templateName, $args = array())
     return ob_get_clean();
 }
 
-$html2pdf = new Html2Pdf();
+$html2pdf = new Html2Pdf('P','A4','fr','true','UTF-8');
 
 $html2pdf->addFont('aktivgrotesk-bold', '',  'aktivgrotesk-bold.php');
 $html2pdf->addFont('aktivgrotesk-regular', '',  'aktivgrotesk-regular.php');
