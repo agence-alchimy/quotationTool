@@ -29,8 +29,20 @@ $html2pdf->addFont('aktivgrotesk-light', '',  'aktivgrotesk-light.php');
 //$html2pdf->SetFontSpacing(3);
 $html2pdf->setDefaultFont('aktivgrotesk-bold');
 
+$advance_payments = get_posts(array(
+    'numberposts'   => -1,
+    'post_type'     => 'acompte',
+    'id'      => $postInfos->acfs['ref_acompte']
+));
+$advance_payment;
+if(isset($advance_payments) && count($advance_payments) > 0 && key_exists(0, $advance_payments)){
+    $advance_payment = $advance_payments[0];
+    $advance_payments_acf = get_fields($advance_payment->ID);
+}
+
 $content = '';
 $content .= get_pdf_template('styles');
+
 $content .= get_pdf_template('entete_facture', array(
     'client'=>$postInfos->acfs['client'][0]->post_title, 
     'titre'=>$postInfos->post_title,
@@ -46,9 +58,8 @@ $content .= get_pdf_template('entete_facture', array(
     'total_remise'=>$postInfos->acfs['total_remise'],
     'total_ht'=>$postInfos->acfs['total_ht'],
     'total_ttc'=>$postInfos->acfs['total_ttc'],
-    'acompte'=>$postInfos->acfs['acompte'],
+    'acompte'=>isset($advance_payments_acf) ? $advance_payments_acf['total_ttc'] : $postInfos->acfs['acompte'],
     'total_a_regler'=>$postInfos->acfs['total_a_regler']
-
 ));
 $content .= get_pdf_template('entrees_facture', array(
     'reference'=>$postInfos->acfs['reference'],
