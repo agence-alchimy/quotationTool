@@ -552,16 +552,17 @@ function acrm_posts_orderby( $query ) {
     $query->set( 'meta_key', 'quoteaccepted' );
     $query->set( 'meta_type', 'numeric' );
   }
-//   if ( 'quoterefused' === $query->get( 'orderby') && $query->get('order') == "asc" ) {
-//     $query->set( 'meta_key', 'quoterefused' );
-//     $query->set( 'meta_value', '1' );
-//     $query->set( 'meta_compare', '==' );
-//   }
-//   else{
-//     $query->set( 'meta_key', 'quoterefused' );
-//     $query->set( 'meta_value', '1' );
-//     $query->set( 'meta_compare', 'NOT EXISTS' );
-//   }
+  if( 'quoterefused' === $query->get( 'orderby')){
+    if($query->get('order') == "asc" ) {
+        $query->set( 'meta_key', 'quoterefused' );
+        $query->set( 'meta_value', '1' );
+        $query->set( 'meta_compare', '==' );
+      }
+      else{
+        $query->set( 'meta_key', 'quoterefused' );
+        $query->set( 'meta_compare', 'NOT EXISTS' );
+      }
+  }
 }
 
 
