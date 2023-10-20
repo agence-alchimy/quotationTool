@@ -41,6 +41,8 @@ services:
       - "traefik.http.routers.quotation.entrypoints=websecure"
       - "traefik.http.routers.quotation.tls=true"
       - "traefik.http.routers.quotation.tls.certresolver=le-resolver"
+      - "traefik.http.routers.quotation.middlewares=api_auth"
+      - "traefik.http.middlewares.api_auth.basicauth.users=AlchimyDev:$$2y$$05$$JiNkfRdf4dbIHYCnbTJ56uPg26NowuC/GARAgNtgal7grmFi9o0TG="
       - "traefik.docker.network=traefik_proxy"
     networks:
       - traefik_proxy
