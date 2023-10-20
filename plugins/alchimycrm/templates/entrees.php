@@ -37,7 +37,6 @@
         if(!empty($prestations)):
         $npresta = count($prestations);
         $j = 0;
-        
         foreach($prestations as $prestation): $j++;
         ?>
         <nobreak>
@@ -50,7 +49,7 @@
                 </tr>
             </table>
         <?php endif;?>
-        <table class="entry"  style="width: 500px; border: 0;margin-bottom: 10px">
+        <table class="entry"  style="width: 500px; border: 0;margin-bottom: 30px">
             <tr>
                 <td >
                     <h3><?php echo wordwrap($prestation['titre'], 40, '<br/>', true); ?></h3>
@@ -80,7 +79,7 @@
         </table>
         </nobreak>
         <?php
-        if($j < $npresta) echo '<hr style="border:0; border-top: 0.2pt solid #999; margin-top:60px;"/>';
+        if($j < $npresta) echo '';
         endforeach; endif;
         ?>
         </div>
