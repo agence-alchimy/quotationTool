@@ -53,7 +53,7 @@ div.title {
 #acompte div.title {
     margin-top: 23.5mm;
 }
-div.title h2 {
+div.title h2, h2.title {
     font-family: aktivgrotesk-regular;
     font-size: 8pt;
     text-transform: uppercase;
@@ -134,7 +134,7 @@ h4 {
     text-transform: uppercase;
 
 }
-.desc strong{
+.desc h6{
     margin-top: 10px;
 }
 .desc {

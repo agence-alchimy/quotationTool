@@ -1,12 +1,17 @@
-<page backtop="30mm" backbottom="20mm" backleft="29mm" backright="29mm" >
+
+    <?php 
+    foreach($entrees as $entry):
+
+    ?>  
+        <page backtop="20mm" backbottom="20mm" backleft="29mm" backright="29mm" >
     <page_header>
         <div class="header">
-            <hr style="border-width:0.1pt; padding-top:10pt; " />
+            <hr style="border-width:0.1pt; padding-top:10pt;" />
             <table style="width: 100%; border: 0; padding-top: 3mm;">
                 <tr>
-                    <td style="text-align: left;    width: 23%"><img src="medias/logo.png" alt="" width="70"></td>
-                    <td style="text-align: left;    width: 44%" class="infos">Devis // <strong><?php echo $reference; ?></strong><br />Date // <strong><?php echo $date; ?></strong></td>
-                    <td style="text-align: right;    width: 33%" class="nums">page [[page_cu]]/[[page_nb]]</td>  
+                    <td style="text-align: left;width: 23%"><img src="medias/logo.png" alt="" width="70"></td>
+                    <td style="text-align: left;width: 44%" class="infos">Devis // <strong><?php echo $reference; ?></strong><br />Date // <strong><?php echo $date; ?></strong></td>
+                    <td style="text-align: right;width: 33%; padding-right: -16px;" class="nums">page [[page_cu]]/[[page_nb]]</td>  
                 </tr>
             </table>
         </div>
@@ -16,16 +21,12 @@
             <p class="light" style="font-size: 6pt">L’ensemble des informations remises à travers ce document demeurent la propriété exclusive de l’agence Alchimy. Vous n’êtes autorisés en aucun cas à diffuser ou divulguer à un tiers les éléments communiqués sans autorisation écrite de notre agence.</p>
         </div>
     </page_footer>
-<div>
-    <?php 
-    foreach($entrees as $entry):
-
-    ?>
-        <?php if(empty($prestations)):?>
+<div class="contenu">
+        <?php if($entry['titre']):?>
             <table style=" border: 0;">
                 <tr>
                     <td >
-                        <h2 style=""><?php echo $entry['titre']; ?></h2>
+                        <h2><?php echo $entry['titre']; ?></h2>
                     </td>
                 </tr>
             </table>
@@ -49,9 +50,7 @@
                 </tr>
             </table>
         <?php endif;?>
-        
-       
-        <table class="entry"  style="width: 500px; border: 0; padding-top: 30px">
+        <table class="entry"  style="width: 500px; border: 0;margin-bottom: 10px">
             <tr>
                 <td >
                     <h3><?php echo wordwrap($prestation['titre'], 40, '<br/>', true); ?></h3>
@@ -80,18 +79,13 @@
             </tr>
         </table>
         </nobreak>
-        
         <?php
-        if( $prestation['pagebreak'] == '1'): ?>
-        
-        <?php endif; ?>
-        <?php
-        if($j < $npresta) echo '<hr style="border:0; border-top: 0.2pt solid #999; margin-top:40px;"/>';
+        if($j < $npresta) echo '<hr style="border:0; border-top: 0.2pt solid #999; margin-top:60px;"/>';
         endforeach; endif;
         ?>
+        </div>
+</page>
     <?php
     endforeach;
     
     ?>
-</div>
-</page>
