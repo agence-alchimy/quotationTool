@@ -18,7 +18,7 @@ const splitPriceString = (inputString) => {
   priceText = [null, undefined, "undefined"].includes(priceText)
     ? ""
     : priceText;
-  console.log(priceNumber, priceText);
+
   if (trimmedInput == null || priceText === trimmedInput) return defaultResult;
 
   return [priceNumber.trim(), `€${priceText.trimEnd()}`];
