@@ -139,7 +139,7 @@ h4 {
     
 }
 .desc {
-    width: 100%;
+    width: 90%;
     padding-bottom: 20px;
 }
 #cgv h2 {

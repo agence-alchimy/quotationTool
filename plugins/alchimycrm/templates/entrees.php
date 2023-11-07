@@ -3,7 +3,7 @@
     foreach($entrees as $entry):
 
     ?>  
-        <page backtop="20mm" backbottom="20mm" backleft="15mm" backright="15mm" >
+        <page backtop="20mm" backbottom="20mm" backleft="20mm" backright="15mm" >
     <page_header>
         <div class="header">
             <hr style="border-width:0.1pt; padding-top:10pt;" />
@@ -67,11 +67,11 @@
                 endif;
                 ?>
                 </td>
-                <td style="text-align: right;">
+                <td style="text-align: right; ; width: 33%">
                     <?php if(empty($prestation['tarif'])) : ?>
-                    <h3>OFFERT</h3>
+                    <h3 style="text-align: right; width: 100%">OFFERT</h3>
                     <?php else: ?>
-                    <h3><?php echo str_replace(',00', '',number_format($n*$prestation['tarif'], 2, ',', '.')); ?> &euro; HT</h3>
+                    <h3 style="text-align: right; ; width: 100%"><?php echo str_replace(',00', '',number_format($n*$prestation['tarif'], 2, ',', '.')); ?> &euro; HT</h3>
                     <?php endif; ?>
                 </td>
             </tr>
