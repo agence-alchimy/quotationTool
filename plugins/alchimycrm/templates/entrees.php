@@ -32,7 +32,9 @@
             </table>
         <?php endif;?>
         <?php
-        $i++;
+        if(isset($i)){
+            $i++;
+        }
         $prestations = $entry['prestations'];
         if(!empty($prestations)):
         $npresta = count($prestations);
