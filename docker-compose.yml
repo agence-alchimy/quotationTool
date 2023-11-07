@@ -1,6 +1,16 @@
 version: "3.7"
 # from https://github.com/docker/awesome-compose/blob/master/official-documentation-samples/wordpress/README.md
 services:
+  phpmyadmin:
+    image: phpmyadmin:latest
+    environment:
+      PMA_HOST: db
+      PMA_USER: ${DB_USER}
+      PMA_PASSWORD: ${DB_PASSWORD}
+      PMA_PMADB: ${DB_NAME}
+    restart: unless-stopped
+    ports:
+      - 7777:80
   db:
     # We use a mariadb image which supports both amd64 & arm64 architecture
     image: mariadb:10.6.4-focal
