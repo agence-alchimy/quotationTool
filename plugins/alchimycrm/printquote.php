@@ -21,6 +21,32 @@ function addSpanToList($val){
     
     return $val;
 }
+
+function splitEntreeDescriptionIntoTd($description_text){
+    $result_string = '';
+    $spanified_text = $description_text;
+
+
+        if($description_text == null){
+            return '';
+        }
+
+        $exploded_strings = explode('<!--more-->', $spanified_text);
+
+        if(is_array($exploded_strings) && count($exploded_strings) > 1){
+            $result_string .= '<td>';
+            foreach($exploded_strings as $string_to_concatenate){
+                $result_string .= '<p class="desc">' .$string_to_concatenate. '</p>';
+            }
+            $result_string .= '</td>';
+        }
+        else{
+            $result_string .= "<td><div class='desc'>{$description_text}</div></td>";
+        }
+        
+    return $result_string;
+}
+
 function get_pdf_template($templateName, $args = array())
 {
     extract($args);    
@@ -56,9 +82,7 @@ $content .= get_pdf_template('entete', array(
 ));
 
 $introduction_field = get_field('introduction', $postInfos->ID);
-if(!empty($introduction_field) && strlen(trim($introduction_field)) > 0){
-
-    $content .= get_pdf_template('preambule', array(
+if(!empty($introduction_field) && strlen(trim($introduction_field)) > 0){    $content .= get_pdf_template('preambule', array(
         'intro'=>addSpanToList(get_field('introduction', $postInfos->ID)),
         'date'=>$postInfos->acfs['Date'],
         'reference'=>$postInfos->acfs['reference'],
@@ -90,8 +114,8 @@ if(!empty($postInfos->acfs['total_ht'])){
     ));
 }
 $content .= get_pdf_template('cgv');
-// echo $content;
-// die();
+
 $html2pdf->pdf->SetDisplayMode('fullpage');
+$html2pdf->setTestTdInOnePage(false);
 $html2pdf->writeHTML($content);
 $html2pdf->output($postInfos->acfs['reference'].'.pdf');

@@ -109,6 +109,10 @@ ul li span {
     font-size: 12pt;
     text-transform: uppercase;
 }
+
+.pagebreak { page-break-before: always; }
+
+
 #banque tr td {
     font-size: 8pt;
 }

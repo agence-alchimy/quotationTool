@@ -25,6 +25,7 @@ function addSpanToList($val){
     return $val;
 }
 
+
 $html2pdf = new Html2Pdf();
 $html2pdf->addFont('aktivgrotesk-bold', '',  'aktivgrotesk-bold.php');
 $html2pdf->addFont('aktivgrotesk-regular', '',  'aktivgrotesk-regular.php');
@@ -200,10 +201,16 @@ foreach($entries as $entry){
         $content .= '<table style="width: 100%; border: 0;"><tr><td style="width:60%"><h3>'.$prestation['prestation']->post_title.'</h3></td><td style="width:20%; text-align: right">';
         $n = 1;
         if($prestation['nombre'] > 1){
-            $content .= '<h3>x'.$prestation['nombre'].'</h3>';
+            $content .= '<h3>'.$prestation['nombre'].'x</h3>';
             $n = $prestation['nombre'];
         }
-        $content .= '</td><td style="width: 20%; text-align: right"><h3>'.$n*$prestation['tarif'].' &euro; HT</h3></td></tr></table>';
+        if(is_numeric($prestation['tarif'])){
+            $content .= '</td><td style="width: 20%; text-align: right"><h3>'.$n*$prestation['tarif'].' &euro; HT</h3></td></tr></table>';
+        }
+        else{
+            $content .= '</td><td style="width: 20%; text-align: right"><h3>'.$prestation['tarif'].'</h3></td></tr></table>';
+        }
+        
         //$content .= '<div>'.addSpanToList($prestation['prestation']->post_content).'</div>';
         $content .= '<div>'.addSpanToList($prestation['description']).'</div>';
         if($j < $npresta){

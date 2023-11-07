@@ -41,7 +41,7 @@
         $j = 0;
         foreach($prestations as $prestation): $j++;
         ?>
-        <nobreak>
+       
         <?php if($j <= 0): ?>
         <table style=" border: 0;">
                 <tr>
@@ -51,6 +51,7 @@
                 </tr>
             </table>
         <?php endif;?>
+        <nobreak>
         <table class="entry"  style="width: 500px; border: 0;margin-bottom: 30px">
             <tr>
                 <td >
@@ -74,12 +75,10 @@
                     <h3 style="text-align: right; ; width: 100%"><?php echo str_replace(',00', '',number_format($n*$prestation['tarif'], 2, ',', '.')); ?> &euro; HT</h3>
                     <?php endif; ?>
                 </td>
-            </tr>
-            <tr >
-                <td><div class="desc"><?php echo addSpanToList($prestation['description']); ?></div></td>
-            </tr>
+            </tr>       
+            <tr><?php echo splitEntreeDescriptionIntoTd(addSpanToList($prestation['description'])); ?></tr>
         </table>
-        </nobreak>
+       </nobreak>
         <?php
         if($j < $npresta) echo '';
         endforeach; endif;
