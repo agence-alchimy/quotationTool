@@ -3,7 +3,7 @@
     foreach($entrees as $entry):
 
     ?>  
-        <page backtop="20mm" backbottom="20mm" backleft="29mm" backright="29mm" >
+        <page backtop="20mm" backbottom="20mm" backleft="15mm" backright="15mm" >
     <page_header>
         <div class="header">
             <hr style="border-width:0.1pt; padding-top:10pt;" />

@@ -136,9 +136,10 @@ h4 {
 }
 .desc h6{
     margin-top: 10px;
+    
 }
 .desc {
-    width: 80%;
+    width: 100%;
     padding-bottom: 20px;
 }
 #cgv h2 {
