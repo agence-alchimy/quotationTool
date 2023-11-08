@@ -3,7 +3,7 @@
     foreach($entrees as $entry):
 
     ?>  
-        <page backtop="20mm" backbottom="20mm" backleft="20mm" backright="15mm" >
+        <page backtop="20mm" backbottom="20mm" backleft="15mm" backright="15mm" >
     <page_header>
         <div class="header">
             <hr style="border-width:0.1pt; padding-top:10pt;" />
@@ -41,17 +41,16 @@
         $j = 0;
         foreach($prestations as $prestation): $j++;
         ?>
-        <nobreak>
         <?php if($j <= 0): ?>
         <table style=" border: 0;">
                 <tr>
                     <td>
-                        <h2 style=""><?php echo $entry['titre']; ?></h2>
+                        <h2><?php echo $entry['titre']; ?></h2>
                     </td>
                 </tr>
-            </table>
+        </table>
         <?php endif;?>
-        <table class="entry"  style="width: 500px; border: 0;margin-bottom: 30px">
+        <table class="entry"  style="width: 500px; border: 0; padding-bottom: 10px">
             <tr>
                 <td >
                     <h3><?php echo wordwrap($prestation['titre'], 40, '<br/>', true); ?></h3>
@@ -79,7 +78,13 @@
                 <td><div class="desc"><?php echo addSpanToList($prestation['description']); ?></div></td>
             </tr>
         </table>
-        </nobreak>
+        <table style=" border: 0;">
+                <tr>
+                    <td>
+                        <div style="width: 617px; height: 1px; background: #a1a1a0; margin-bottom: 10px;"></div>
+                    </td>
+                </tr>
+        </table>
         <?php
         if($j < $npresta) echo '';
         endforeach; endif;
