@@ -36,7 +36,14 @@
                         ?>
                     </em>
                 </td>
-                <td style="width:15%; text-align: right; padding: 10pt 0 "><?php echo (!empty($service['tarif'])) ?  str_replace(',00', '',number_format($service['tarif'], 2, ',', '.')).' &euro; HT' : 'OFFERT'; ?></td>
+                <td style="width:15%; text-align: right; padding: 10pt 0 "><?php 
+                if(is_numeric($service['tarif'])){
+                    echo str_replace(',00', '',number_format($n*$prestation['tarif'], 2, ',', '.')) . "&euro; HT"; 
+                }
+                else{
+                    echo $service['tarif']; 
+                }
+                ?></td>
             </tr>
             <?php if($k<$num-1): ?>
             <tr>
