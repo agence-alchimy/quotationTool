@@ -14,7 +14,7 @@ function acrm_enqueue( $hook ) {
 		'app',
 		plugins_url( '/admin/app.js', __FILE__ ),
 		array( 'jquery' ),
-		'1.0.0',
+		'1.0.2',
 		true
 	);
 
