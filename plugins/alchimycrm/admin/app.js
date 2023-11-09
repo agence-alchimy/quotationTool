@@ -104,6 +104,7 @@ const parseEntries = () => {
 var total;
 const operateTotal = () => {
   entries = document.querySelectorAll(".tarif");
+  console.log(entries);
   total = 0;
   let fieldNumberValue,
     fieldTextValue = "";

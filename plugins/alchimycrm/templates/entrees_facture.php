@@ -38,7 +38,13 @@
                     echo $nombre_string;
                     ?>
                 </em>
-                <?php echo (!empty($service['tarif'])) ?  str_replace(',00', '',number_format($service['tarif'], 2, ',', '.')).' &euro; HT' : 'TEST'; ?></p></td>
+                <?php  if(is_numeric($service['tarif'])){
+                    echo str_replace(',00', '',number_format($n*$service['tarif'], 2, ',', '.')) . "&euro; HT"; 
+                }
+                else{
+                    echo $service['tarif']; 
+                }     
+                ?></p></td>
             </tr>
             <?php if($k<$num-1): ?>
             <tr>
