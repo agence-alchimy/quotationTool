@@ -1,8 +1,6 @@
 <style type="text/css">
 
-.acf-fields[data-name="prestations"]{
-    border : 1px solid red !important;
-}
+
 
 .pb {
     margin-bottom: 100mm;
@@ -136,9 +134,10 @@ h4 {
 }
 .desc h6{
     margin-top: 10px;
+    
 }
 .desc {
-    width: 80%;
+    width: 90%;
     padding-bottom: 20px;
 }
 #cgv h2 {

@@ -93,5 +93,6 @@ $content .= get_pdf_template('cgv');
 // echo $content;
 // die();
 $html2pdf->pdf->SetDisplayMode('fullpage');
+$html2pdf->setTestTdInOnePage(false);
 $html2pdf->writeHTML($content);
 $html2pdf->output($postInfos->acfs['reference'].'.pdf');
