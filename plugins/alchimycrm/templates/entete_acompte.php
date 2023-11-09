@@ -39,7 +39,9 @@
         <p style="font-size: 10pt; text-transform: uppercase; margin-top: 24mm;">Acompte de
             <?php echo $pourcentage; ?>% sur devis
             <?php echo $ref_devis; ?> du
-            <?php echo $date_devis; ?>
+            <?php $converted_date = date_parse_from_format("m/d/Y", $date_devis);
+            echo $converted_date['day'] . "/" . $converted_date['month'] . "/" . $converted_date['year']
+            ?>
         </p>
 
     </div>
