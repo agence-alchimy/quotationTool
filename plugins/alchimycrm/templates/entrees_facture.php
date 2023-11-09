@@ -39,7 +39,7 @@
                     ?>
                 </em>
                 <?php  if(is_numeric($service['tarif'])){
-                    echo str_replace(',00', '',number_format($n*$service['tarif'], 2, ',', '.')) . "&euro; HT"; 
+                    echo (!empty($service['tarif'])) ?  str_replace(',00', '',number_format($service['tarif'], 2, ',', '.')).' &euro; HT' : 'OFFERT';
                 }
                 else{
                     echo $service['tarif']; 
