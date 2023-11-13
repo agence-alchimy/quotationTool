@@ -119,9 +119,10 @@ const operateTotal = () => {
       fieldNumberValue = fieldValue;
     }
 
-    if (Number.isNaN(fieldNumberValue)) {
+    if (Number.isNaN(parseInt(fieldNumberValue))) {
       fieldNumberValue = 0;
     }
+    console.log(fieldNumberValue, Number.isNaN(parseInt(fieldNumberValue)));
     // Check if quantity is set
     let nombre = entry.parentNode.querySelector(".nombre");
     //console.log(nombre)
