@@ -26,7 +26,7 @@
             <table style=" border: 0;">
                 <tr>
                     <td >
-                        <h2><?php echo $entry['titre']; ?></h2>
+                    <h2><?php echo wordwrap($entry['titre'], 25, '<br/>', true) ?></h2>
                     </td>
                 </tr>
             </table>
@@ -45,14 +45,14 @@
         <table style=" border: 0;">
                 <tr>
                     <td>
-                        <h2><?php echo $entry['titre']; ?></h2>
+                        <h2><?php echo wordwrap($entry['titre'], 25, '<br/>', true) ?></h2>
                     </td>
                 </tr>
         </table>
         <?php endif;?>
-        <table class="entry"  style="width: 500px; border: 0; padding-bottom: 10px">
+        <table class="entry" style="width: 500px; border: 0; padding-bottom: 10px">
             <tr>
-                <td >
+                <td style="width: 400px;">
                     <h3><?php echo wordwrap($prestation['titre'], 40, '<br/>', true); ?></h3>
                 </td>
                 <td >
