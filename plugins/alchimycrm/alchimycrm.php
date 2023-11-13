@@ -14,7 +14,7 @@ function acrm_enqueue( $hook ) {
 		'app',
 		plugins_url( '/admin/app.js', __FILE__ ),
 		array( 'jquery' ),
-		'1.0.2',
+		filemtime(plugins_url( '/admin/app.js', __FILE__ )),
 		true
 	);
 
@@ -22,7 +22,7 @@ function acrm_enqueue( $hook ) {
 		'admin',
 		plugins_url( '/css/admin.css', __FILE__ ),
 		array(),
-		time()
+		filemtime(plugins_url( '/css/admin.css', __FILE__  ))
 	);
 
 

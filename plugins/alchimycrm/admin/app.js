@@ -64,7 +64,6 @@ const addActionCopy = () => {
         })
           .then((response) => response.json())
           .then((response) => {
-            console.log(response);
             let content = response.data[0].post_content;
             let price = response.data[0].tarif;
             let title = response.data[0].post_title;
@@ -104,14 +103,11 @@ const parseEntries = () => {
 var total;
 const operateTotal = () => {
   entries = document.querySelectorAll(".tarif");
-  console.log(entries);
   total = 0;
   let fieldNumberValue,
     fieldTextValue = "";
   for (let entry of entries) {
     let fieldValue = entry.querySelector("input").value;
-    console.log("------");
-    console.log(fieldValue);
     if (typeof fieldValue === "string") {
       [fieldNumberValue, fieldTextValue, ...others] =
         splitPriceString(fieldValue);
@@ -122,14 +118,11 @@ const operateTotal = () => {
     if (Number.isNaN(parseInt(fieldNumberValue))) {
       fieldNumberValue = 0;
     }
-    console.log(fieldNumberValue, Number.isNaN(parseInt(fieldNumberValue)));
     // Check if quantity is set
     let nombre = entry.parentNode.querySelector(".nombre");
-    //console.log(nombre)
     let nentries = nombre.querySelector("input").value
       ? Number(nombre.querySelector("input").value)
       : 1;
-    //console.log(entry.value + " x " + nentries)
     let optioncb = entry.parentNode.querySelector(
       '.option input[type="checkbox"]'
     );
@@ -137,7 +130,6 @@ const operateTotal = () => {
       let option = entry.parentNode
         .querySelector('.option input[type="checkbox"]')
         .getAttribute("checked");
-      //console.log(option)
       if (option != "checked") {
         total = total + Number(fieldNumberValue) * nentries;
       }
