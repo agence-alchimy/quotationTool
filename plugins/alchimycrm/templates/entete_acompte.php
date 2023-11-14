@@ -24,14 +24,12 @@
         </table>
     </div>
     <div class="title" style="margin-top: 33.5mm;">
-
-        <p style="margin:0; font-size: 7pt; margin-bottom: 7pt;"><span class="light">Facture // </span>
+        <p style="margin:0; font-size: 7pt; margin-bottom: 4pt;"><span class="light">Facture // </span>
             <?php echo $reference; ?>
         </p>
         <p style="margin:0; font-size: 7pt; margin-bottom: 20mm;"><span class="light">Date // </span>
             <?php echo $date; ?>
         </p>
-
         <p class="client" style="margin-top:0">Facture d'acompte</p>
         <p class="prestation light" style="margin-bottom:0;">
             <?php echo $titre; ?>
@@ -40,10 +38,21 @@
             <?php echo $pourcentage; ?>% sur devis
             <?php echo $ref_devis; ?> du
             <?php $converted_date = date_parse_from_format("m/d/Y", $date_devis);
-            echo $converted_date['day'] . "/" . $converted_date['month'] . "/" . $converted_date['year']
+            $timestamp =  mktime(
+                $converted_date['hour'], 
+                $converted_date['minute'], 
+                $converted_date['second'], 
+                $converted_date['month'], 
+                $converted_date['day'], 
+                $converted_date['year']
+        );  
+
+        $formatter = new IntlDateFormatter('fr_FR', IntlDateFormatter::FULL, IntlDateFormatter::FULL);
+        $formatter->setPattern('dd MMMM Y');
+    
+            echo $formatter->format(date(intval($timestamp)));
             ?>
         </p>
-
     </div>
 
 
@@ -65,7 +74,8 @@
                         <?php echo $ville; ?>
                     </p>
                     <br>
-                    <p style="font-size: 7pt">Conditions de règlement : 30 jours<br>Mode de règlement : Chèque ou
+                    <p class="light" style="font-size: 7pt;">
+                    <strong>Conditions de règlement :</strong> 30 jours <br><strong>Mode de règlement :</strong> Chèque ou
                         Virement bancaire</p>
                 </td>
                 <td style="width:30%; padding-top:11mm;" class="chiffreslabels">
