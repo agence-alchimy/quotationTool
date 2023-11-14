@@ -186,7 +186,6 @@ function add_custom_edit_box( $column_name, $post_type, $taxonomy ) {
             </fieldset>
             <?php
         endif;
-            // echo 'custom page field';
             break;
         
         default:
