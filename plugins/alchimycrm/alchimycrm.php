@@ -145,6 +145,55 @@ function acrm_custom_box_devis_html( $post ) {
 	<?php
 }
 
+add_action( 'quick_edit_custom_box', 'add_custom_edit_box', 10, 3 );
+function add_custom_edit_box( $column_name, $post_type, $taxonomy ) {
+    global $post;
+
+    switch ( $post_type ) {
+        case 'post':
+        case 'devis':
+
+        if( $column_name === 'quotesent' ): 
+        ?>
+            <fieldset class="inline-edit-col-right" id="#edit-quotesent">
+                    <label>
+                        <span class="title"> Devis envoyé </span>
+                            <input type="checkbox" name="quotesent" id="" <?php echo (get_post_meta( $post->ID, 'quotesent', true ) == '1') ? 'checked' : ''; ?>>
+                        </span>
+                    </label>
+            </fieldset>
+            <?php
+        endif;
+        if( $column_name === 'quoteaccepted' ): 
+            ?>
+                <fieldset class="inline-edit-col-right" id="#edit-quoteaccepted">
+                        <label>
+                            <span class="title"> Devis accepté </span>
+                                <input type="checkbox" name="quoteaccepted" id="" <?php echo (get_post_meta( $post->ID, 'quoteaccepted', true ) == '1') ? 'checked' : ''; ?>>
+                            </span>
+                        </label>
+                </fieldset>
+                <?php
+            endif;
+        if( $column_name === 'quoterefused' ):
+        ?>
+            <fieldset class="inline-edit-col-right" id="#edit-quoterefused">
+                    <label>
+                        <span class="title"> Devis refusé </span>
+                            <input type="checkbox" name="quoterefused" id="" <?php echo (get_post_meta( $post->ID, 'quoterefused', true ) == '1') ? 'checked' : ''; ?>>
+                        </span>
+                    </label>
+            </fieldset>
+            <?php
+        endif;
+            // echo 'custom page field';
+            break;
+        
+        default:
+            break;
+    }
+}
+
 function acrm_custom_box_facture_html( $post ) {
 
     $quotes = get_posts(array('post_type'=>'devis'));
