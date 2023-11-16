@@ -1,7 +1,10 @@
+//// CONSTANTS
+const PRICE_REGEX = /^\d+([.,]\d+)?/;
+
 ////
 //// TOOL FUNCTIONS
 ////
-const PRICE_REGEX = /^\d+([.,]\d+)?/;
+
 const splitPriceString = (inputString) => {
   const defaultResult = [inputString, ""];
 
@@ -142,22 +145,48 @@ const operateTotal = () => {
 
   var value = typeremise.options[typeremise.selectedIndex].value;
 
-  if (value == "pourcent") {
-    document.querySelector("#total_remise input").value =
-      total * (remise / 100);
-    total = total - total * (remise / 100);
-  } else {
-    document.querySelector("#total_remise input").value = remise;
-    total = total - remise;
-  }
-
   //document.querySelector('#total_remise input').value =
-  document.querySelector("#total_ht input").value = total;
-  document.querySelector("#total_ttc input").value = total * 1.2;
+  const totalHtElement = document.querySelector("#total_ht input");
+  const totalTtcElement = document.querySelector("#total_ttc input");
+  if (total != null && typeof total === "number" && !Number.isNaN(total)) {
+    if (value == "pourcent") {
+      document.querySelector("#total_remise input").value =
+        total * (remise / 100);
+      total = total - total * (remise / 100);
+    } else {
+      document.querySelector("#total_remise input").value = remise;
+      total = total - remise;
+    }
+
+    if (totalHtElement) {
+      totalHtElement.value = total;
+      totalHtElement.classList.remove("warning");
+    }
+
+    if (totalTtcElement) {
+      totalTtcElement.value = total * 1.2;
+      totalTtcElement.classList.remove("warning");
+    }
+  } else {
+    if (totalHtElement) {
+      totalHtElement.classList.add("warning");
+    }
+    if (totalTtcElement) {
+      totalTtcElement.classList.add("warning");
+    }
+  }
   if (invoiceEdit) {
     let acompte = document.querySelector(".acompte input").value;
     let reste_a_regler = total * 1.2 - acompte;
-    document.querySelector(".total_a_regler input").value = reste_a_regler;
+
+    if (typeof total === "number") {
+      document.querySelector(".total_a_regler input").value = reste_a_regler;
+      document
+        .querySelector(".total_a_regler input")
+        .classList.remove("warning");
+    } else {
+      document.querySelector(".total_a_regler input").classList.add("warning");
+    }
   }
 };
 

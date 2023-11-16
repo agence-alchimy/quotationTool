@@ -22,7 +22,7 @@ function acrm_enqueue( $hook ) {
 		'admin',
 		plugins_url( '/css/admin.css', __FILE__ ),
 		array(),
-		filemtime(__DIR__ . '/admin/app.js')
+		filemtime(__DIR__ . '/css/admin.css')
 	);
 
 
@@ -151,7 +151,7 @@ function acrm_custom_box_devis_html( $post ) {
 // add_action( 'quick_edit_custom_box', 'add_custom_edit_box', 10, 3 );
 //
 function add_custom_edit_box( $column_name, $post_type, $taxonomy ) {
-    global $post; ///
+    global $post;
 
     switch ( $post_type ) {
         case 'post':

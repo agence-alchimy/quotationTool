@@ -23,4 +23,9 @@
 .acf-field[data-name=prestations] .acf-row > .acf-fields .acf-field:last-child {
   margin-bottom: 5rem;
   border-bottom: 1px solid #eaecf0;
+}
+
+#total_ht input.warning,
+#total_ttc input.warning {
+  border: 5px solid red;
 }/*# sourceMappingURL=admin.css.map */
