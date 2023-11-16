@@ -145,9 +145,13 @@ function acrm_custom_box_devis_html( $post ) {
 	<?php
 }
 
-add_action( 'quick_edit_custom_box', 'add_custom_edit_box', 10, 3 );
+// THIS IS DEACTIVATED BECAUSE ALL POPULATION SEEMS TO BE MADE IN JS
+// TODO: Find a way to do neatly and not split code between backend and front-end.
+//
+// add_action( 'quick_edit_custom_box', 'add_custom_edit_box', 10, 3 );
+//
 function add_custom_edit_box( $column_name, $post_type, $taxonomy ) {
-    global $post;
+    global $post; ///
 
     switch ( $post_type ) {
         case 'post':
@@ -155,10 +159,12 @@ function add_custom_edit_box( $column_name, $post_type, $taxonomy ) {
 
         if( $column_name === 'quotesent' ): 
         ?>
-            <fieldset class="inline-edit-col-right" id="#edit-quotesent">
+
+            <fieldset class="inline-edit-col-left" id="#edit-quotesent">
                     <label>
+                    <?php var_dump($post) ?>
                         <span class="title"> Devis envoyé </span>
-                            <input type="checkbox" name="quotesent" id="" <?php echo (get_post_meta( $post->ID, 'quotesent', true ) == '1') ? 'checked' : ''; ?>>
+                            <input type="checkbox" name="quotesent" <?php echo (get_post_meta( $post->ID, 'quotesent', true ) == '1') ? 'checked' : ''; ?>>
                         </span>
                     </label>
             </fieldset>
@@ -166,10 +172,10 @@ function add_custom_edit_box( $column_name, $post_type, $taxonomy ) {
         endif;
         if( $column_name === 'quoteaccepted' ): 
             ?>
-                <fieldset class="inline-edit-col-right" id="#edit-quoteaccepted">
+                <fieldset class="inline-edit-col-left" id="#edit-quoteaccepted">
                         <label>
                             <span class="title"> Devis accepté </span>
-                                <input type="checkbox" name="quoteaccepted" id="" <?php echo (get_post_meta( $post->ID, 'quoteaccepted', true ) == '1') ? 'checked' : ''; ?>>
+                                <input type="checkbox" name="quoteaccepted" <?php echo (get_post_meta( $post->ID, 'quoteaccepted', true ) == '1') ? 'checked' : ''; ?>>
                             </span>
                         </label>
                 </fieldset>
@@ -177,10 +183,11 @@ function add_custom_edit_box( $column_name, $post_type, $taxonomy ) {
             endif;
         if( $column_name === 'quoterefused' ):
         ?>
-            <fieldset class="inline-edit-col-right" id="#edit-quoterefused">
+            <fieldset class="inline-edit-col-left" id="#edit-quoterefused">
                     <label>
+                        <?php echo get_post_meta( $post->ID, 'quoterefused', true ) ?>
                         <span class="title"> Devis refusé </span>
-                            <input type="checkbox" name="quoterefused" id="" <?php echo (get_post_meta( $post->ID, 'quoterefused', true ) == '1') ? 'checked' : ''; ?>>
+                            <input type="checkbox" name="quoterefused" <?php echo (get_post_meta( $post->ID, 'quoterefused') == 1) ? 'checked' : ''; ?>>
                         </span>
                     </label>
             </fieldset>
