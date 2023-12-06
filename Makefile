@@ -83,7 +83,11 @@ install:
 
 ### EXPORT WORDPRESS
 wp-export: ## create a wordpress folder with a classic structure
-	cp -a ./wp_data/. ./wp_export/.
-	cp -a ./plugins/. ./wp_export/wp-content/plugins/.
-	cp -a ./themes/. ./wp_export/wp-content/themes/.
+	mkdir ./wp_export
+	mkdir ./wp_export/wp-content
+	mkdir ./wp_export/wp-content/plugins
+	mkdir ./wp_export/wp-content/themes
+	cp -a ./wp_data ./wp_export/
+	cp -a ./plugins ./wp_export/wp-content/plugins/
+	cp -a ./themes ./wp_export/wp-content/themes/
 
