@@ -312,7 +312,8 @@ function acrm_set_quote_number( $post_id, $post, $update )  {
             }
             //$nposts = count(get_posts( $args ));
             update_field('numero', $num, $post_id);
-            $date = !is_null(get_field('date', $post_id)) ? get_field('date', $post_id) : date(ACF_DEFAULT_DATE_FORMAT);
+            $date = !is_null(get_field('date', $post_id)) ? DateTime::createFromFormat('d/m/Y', get_field('date', $post_id)) : new DateTime();
+            $date = $date->format(ACF_DEFAULT_DATE_FORMAT);
             update_field('date', $date, $post_id);
             $ref = "D-".date('Y')."-".sprintf("%04d", $num);
             update_field('reference', $ref, $post_id);
@@ -338,7 +339,8 @@ function acrm_set_quote_number( $post_id, $post, $update )  {
             }
             //$nposts = count(get_posts( $args ));
             update_field('numero', $num, $post_id);
-            $date = !is_null(get_field('date', $post_id)) ? get_field('date', $post_id) : date(ACF_DEFAULT_DATE_FORMAT);
+            $date = !is_null(get_field('date', $post_id)) ? DateTime::createFromFormat('d/m/Y', get_field('date', $post_id)) : new DateTime();
+            $date = $date->format(ACF_DEFAULT_DATE_FORMAT);
             update_field('date', $date, $post_id);
             $ref = "F-".date('Y')."-".sprintf("%04d", $num);
             update_field('reference', $ref, $post_id);
@@ -364,7 +366,8 @@ function acrm_set_quote_number( $post_id, $post, $update )  {
             }
             //$nposts = count(get_posts( $args ));
             update_field('numero', $num, $post_id);
-            $date = !is_null(get_field('date', $post_id)) ? get_field('date', $post_id) : date(ACF_DEFAULT_DATE_FORMAT);
+            $date = !is_null(get_field('date', $post_id)) ? DateTime::createFromFormat('d/m/Y', get_field('date', $post_id)) : new DateTime();
+            $date = $date->format(ACF_DEFAULT_DATE_FORMAT);
             update_field('date', $date, $post_id);
             $ref = "FA-".date('Y')."-".sprintf("%04d", $num);
             update_field('reference', $ref, $post_id);
