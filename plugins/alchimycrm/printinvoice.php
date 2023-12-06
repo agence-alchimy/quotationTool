@@ -3,7 +3,7 @@ global $wp, $wp_query, $wp_the_query, $wp_rewrite, $wp_did_header;
 require('../../../wp-load.php');
 $post = $_GET['p'];
 $postInfos = get_post($post);
-$acfs = get_fields($post->ID);
+$acfs = get_fields($postInfos->ID);
 $postInfos->acfs = $acfs;
 define('TVA', 0.2);
 require __DIR__.'/vendor/autoload.php';
@@ -62,7 +62,7 @@ $content .= get_pdf_template('entete_facture', array(
     'total_remise'=>$postInfos->acfs['total_remise'],
     'total_ht'=>$postInfos->acfs['total_ht'],
     'total_ttc'=>$postInfos->acfs['total_ttc'],
-    'acompte'=>isset($advance_payments_acf) ? $advance_payments_acf['total_ttc'] : 0,
+    'acompte'=>isset($advance_payments_acf) ? $advance_payments_acf['total_ttc'] : $postInfos->acfs['acompte'],
     'total_a_regler'=>$postInfos->acfs['total_a_regler']
 ));
 $content .= get_pdf_template('entrees_facture', array(
