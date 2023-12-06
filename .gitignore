@@ -85,6 +85,7 @@ wp_data/*
 
 # EXPORT
 wp_export/*
+./wp_export/*
 
 ###################  here are some example of how you should add your plugins / themes to respository
 
