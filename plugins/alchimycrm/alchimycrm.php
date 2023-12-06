@@ -279,10 +279,12 @@ function acrm_custom_box_acompte_html( $post ) {
     </div>
 	<?php
 }
+
+
+CONST ACF_DEFAULT_DATE_FORMAT = 'm/d/Y';
 // Automatically adds quote's number at it's creation
 function acrm_set_quote_number( $post_id, $post, $update )  {
-    // var_dump($post);
-    // die();
+    
 	if( ! $update ) {
         if($post->post_type == 'devis'){
             $args = array(
@@ -310,7 +312,7 @@ function acrm_set_quote_number( $post_id, $post, $update )  {
             }
             //$nposts = count(get_posts( $args ));
             update_field('numero', $num, $post_id);
-            $date = (get_field('date', $post_id)) ? get_field('date', $post_id) : date('d/m/Y');
+            $date = (get_field('date', $post_id)) ? get_field('date', $post_id) : date(ACF_DEFAULT_DATE_FORMAT);
             update_field('date', $date, $post_id);
             $ref = "D-".date('Y')."-".sprintf("%04d", $num);
             update_field('reference', $ref, $post_id);
@@ -336,7 +338,7 @@ function acrm_set_quote_number( $post_id, $post, $update )  {
             }
             //$nposts = count(get_posts( $args ));
             update_field('numero', $num, $post_id);
-            $date = (get_field('date', $post_id)) ? get_field('date', $post_id) : date('d/m/Y');
+            $date = (get_field('date', $post_id)) ? get_field('date', $post_id) : date(ACF_DEFAULT_DATE_FORMAT);
             update_field('date', $date, $post_id);
             $ref = "F-".date('Y')."-".sprintf("%04d", $num);
             update_field('reference', $ref, $post_id);
@@ -362,7 +364,7 @@ function acrm_set_quote_number( $post_id, $post, $update )  {
             }
             //$nposts = count(get_posts( $args ));
             update_field('numero', $num, $post_id);
-            $date = (get_field('date', $post_id)) ? get_field('date', $post_id) : date('d/m/Y');
+            $date = (get_field('date', $post_id)) ? get_field('date', $post_id) : date(ACF_DEFAULT_DATE_FORMAT);
             update_field('date', $date, $post_id);
             $ref = "FA-".date('Y')."-".sprintf("%04d", $num);
             update_field('reference', $ref, $post_id);
