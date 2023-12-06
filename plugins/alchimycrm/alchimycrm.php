@@ -281,7 +281,7 @@ function acrm_custom_box_acompte_html( $post ) {
 }
 
 
-CONST ACF_DEFAULT_DATE_FORMAT = 'd//Y';
+CONST ACF_DEFAULT_DATE_FORMAT = 'm/d/Y';
 // Automatically adds quote's number at it's creation
 function acrm_set_quote_number( $post_id, $post, $update )  {
     
@@ -312,7 +312,7 @@ function acrm_set_quote_number( $post_id, $post, $update )  {
             }
             //$nposts = count(get_posts( $args ));
             update_field('numero', $num, $post_id);
-            $date = !is_null(get_field('date', $post_id)) ? get_field('date', $post_id) : date(ACF_DEFAULT_DATE_FORMAT);
+            $date = date(ACF_DEFAULT_DATE_FORMAT);
             update_field('date', $date, $post_id);
             $ref = "D-".date('Y')."-".sprintf("%04d", $num);
             update_field('reference', $ref, $post_id);
